@@ -15,12 +15,12 @@ $(document).ready(function () {
           html += '<p class="no-available-data p-2"><i class="fa fa-warning text-warning"> </i> No data available for this course.</p>';
         } else {
           data.forEach(function (element) {
-            html += "\n                        <div class=\"users-bootbox rounded p-2\">\n                                <ul class=\"mb-0\">\n                                    <li>First Name: ".concat(element.first_name, "</li>\n                                    <li>Last Name: ").concat(element.last_name, "</li>\n                                    <li>Email: ").concat(element.email, "</li>\n                                    <li>Role: ").concat(element.role, "</li>\n                                    <li>Age: ").concat(element.age, "</li>\n                                </ul>\n                            </div>\n                        ");
+            html += "\n                        <div class=\"bootbox-wrapper rounded p-2\">\n                                <ul class=\"mb-0\">\n                                    <li>First Name: ".concat(element.first_name, "</li>\n                                    <li>Last Name: ").concat(element.last_name, "</li>\n                                    <li>Email: ").concat(element.email, "</li>\n                                    <li>Role: ").concat(element.role, "</li>\n                                    <li>Age: ").concat(element.age, "</li>\n                                </ul>\n                            </div>\n                        ");
           });
         }
 
         bootbox.alert({
-          size: "medium",
+          size: "lg",
           title: "Users",
           message: html
         });

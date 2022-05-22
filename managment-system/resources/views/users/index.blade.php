@@ -10,6 +10,8 @@
                 <th>Email</th>
                 <th>Age</th>
                 <th>Role</th>
+                <th>Created</th>
+                <th>Updated</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -21,6 +23,8 @@
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->age }}</td>
                     <td>{{ $item->role }}</td>
+                    <td>{{ $item->created_at }}</td>
+                    <td>{{ $item->updated_at }}</td>
                     <td>
                         <div>
                             <div class="">
