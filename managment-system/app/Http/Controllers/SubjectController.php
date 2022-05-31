@@ -32,7 +32,7 @@ class SubjectController extends Controller
 
         $courseId = $request->get('course_id');
         $newSubject->courses()->attach($courseId);
-        return redirect()->route('course.index')->with('success', 'Successfully created data');
+        return redirect()->route('subject.index')->with('success', 'Successfully created data');
     }
 
     public function edit(Subject $subject)
