@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ExamController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +42,25 @@ Route::prefix('courses')->group(function () {
     Route::get('/show/{course}', [CourseController::class, 'show'])->name('course.show');
 });
 
+Route::prefix('subjects')->group(function () {
+    Route::get('/', [SubjectController::class, 'index'])->name('subject.index');
+    Route::get('/create', [SubjectController::class, 'create'])->name('subject.create');
+    Route::post('/store', [SubjectController::class, 'store'])->name('subject.store');
+    Route::post('/update/{subject}', [SubjectController::class, 'update'])->name('subject.update');
+    Route::get('/edit/{subject}', [SubjectController::class, 'edit'])->name('subject.edit');
+    Route::get('/delete/{subject}', [SubjectController::class, 'delete'])->name('subject.delete');
+    Route::get('/show/{subject}', [SubjectController::class, 'show'])->name('subject.show');
+    Route::get('/courses/{subject}', [SubjectController::class, 'getCourse'])->name('subject.course');
+    Route::post('/detach/course/{subject}', [SubjectController::class, 'detachCourse'])->name('subject.course.detach');
+});
+
+Route::prefix('exams')->group(function () {
+    Route::get('/', [ExamController::class, 'index'])->name('exam.index');
+    Route::get('/create', [ExamController::class, 'create'])->name('exam.create');
+    Route::post('/store', [ExamController::class, 'store'])->name('exam.store');
+    Route::post('/update/{exam}', [ExamController::class, 'update'])->name('exam.update');
+    Route::get('/edit/{exam}', [ExamController::class, 'edit'])->name('exam.edit');
+    Route::get('/delete/{exam}', [ExamController::class, 'delete'])->name('exam.delete');
+    Route::get('/show/{exam}', [ExamController::class, 'show'])->name('exam.show');
+    Route::post('/student/detach/{exam}', [ExamController::class, 'detachStudent'])->name('exam.student.detach');
+});

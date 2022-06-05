@@ -29,4 +29,9 @@ class Course extends Model
         return $this->hasMany(User::class,'course_id','id')->orderBy('first_name','ASC');
     }
 
+    public function subjects(){
+        return $this->belongsToMany(Subject::class,'subject_id','id')->withTimestamps();
+
+    }
+
 }

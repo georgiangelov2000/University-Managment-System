@@ -2,5 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/course_action.js": "/js/course_action.js",
     "/js/user_action.js": "/js/user_action.js",
+    "/js/subject_action.js": "/js/subject_action.js",
+    "/js/exam_action.js": "/js/exam_action.js",
     "/css/app.css": "/css/app.css"
 }

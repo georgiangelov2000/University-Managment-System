@@ -12,7 +12,7 @@ $(document).ready(function () {
                 } else {
                     data.forEach(element => {
                         html += `
-                        <div class="users-bootbox rounded p-2">
+                        <div class="bootbox-wrapper rounded p-2">
                                 <ul class="mb-0">
                                     <li>Title: ${element.title}</li>
                                     <li>Course year: ${element.year_of_course}</li>
@@ -23,8 +23,8 @@ $(document).ready(function () {
                     });
                 }
                 bootbox.alert({
-                    size: "medium",
-                    title: "Users",
+                    size: "lg",
+                    title: "Course",
                     message: html,
                 })
             },

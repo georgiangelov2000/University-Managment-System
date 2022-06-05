@@ -17,3 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
     ]);
 mix.js('resources/js/course_action.js', 'public/js')
 mix.js('resources/js/user_action.js', 'public/js')
+mix.js('resources/js/subject_action.js', 'public/js')
+mix.js('resources/js/exam_action.js', 'public/js')

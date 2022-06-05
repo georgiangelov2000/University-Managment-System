@@ -60,4 +60,9 @@ class User extends Authenticatable
         return $this->belongsTo(Course::class,'course_id','id');
     }
 
+    public function exams(){
+        return $this->belongsToMany(Exam::class,'user_has_exams')->withTimestamps();
+    }
+
+
 }

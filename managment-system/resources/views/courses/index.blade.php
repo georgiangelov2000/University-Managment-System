@@ -8,6 +8,8 @@
                 <th>Title</th>
                 <th>Year</th>
                 <th>Fee</th>
+                <th>Created</th>
+                <th>Updated</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,6 +19,8 @@
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->year_of_course }}</td>
                     <td>{{ $item->fee }}</td>
+                    <td>{{ $item->created_at }}</td>
+                    <td>{{ $item->updated_at }}</td>
                     <td>
                         <div class="">
                             <button data-id={{ $item->id }} type="button" class="mr-1 btn btn-primary btn-sm bootbox">

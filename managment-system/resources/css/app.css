@@ -23,7 +23,7 @@ header .form-control-dark {
     height: 200px !important;
     overflow: auto !important;
 }
-.users-bootbox{
+.bootbox-wrapper{
     background-color:#f7f7f9;
 }
 .no-available-data{
@@ -46,3 +46,9 @@ header .form-control-dark {
     text-shadow: none;
     opacity: .5;
 }
+
+.table-description{
+    height: 100px;
+    overflow: scroll;
+}
+
