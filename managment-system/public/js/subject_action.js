@@ -40,7 +40,7 @@ $(document).ready(function () {
         if (data.length <= 0) {
           html += '<p class="no-available-data p-2"><i class="fa fa-warning text-warning"> </i> No data available for this subject.</p>';
         } else {
-          html += "<form class='p-2 detachForm' method='post' action='" + POST_DETACH_COURSES.replace(':id', currentId) + "'>" + "<div class='form-group mb-2'>" + '<select class="form-select" multiple aria-label="multiple select example" name="course_id[]" >';
+          html += "<form class='p-2 detachForm' method='post' action='" + POST_DETACH_COURSES.replace(':id', currentId) + "'>" + "<div class='form-group mb-2'>" + '<select class="form-control form-control-sm" multiple aria-label="multiple select example" name="course_id[]" >';
           data.forEach(function (element) {
             html += "<option value='" + element.id + "'>" + element.title + "</option>";
           });

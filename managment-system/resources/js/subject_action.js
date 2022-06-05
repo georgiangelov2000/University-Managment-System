@@ -47,7 +47,7 @@ $(document).ready(function () {
                 } else {
                     html += "<form class='p-2 detachForm' method='post' action='"+POST_DETACH_COURSES.replace(':id',currentId)+"'>"
                     +"<div class='form-group mb-2'>"+
-                        '<select class="form-select" multiple aria-label="multiple select example" name="course_id[]" >'
+                        '<select class="form-control form-control-sm" multiple aria-label="multiple select example" name="course_id[]" >'
                     data.forEach(element => {
                         html += "<option value='"+element.id+"'>"+element.title+"</option>";
                     });

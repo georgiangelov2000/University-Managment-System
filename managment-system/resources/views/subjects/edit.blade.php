@@ -12,7 +12,7 @@
             <label for="" class="form-label">Description</label>
             <input type="text" class="form-control form-control-sm" name="description" value="{{ $subject->description }}">
         </div>
-        <select class="form-select" multiple aria-label="multiple select example" name="course_id[]">
+        <select class="form-control form-control-sm col-md-12" multiple aria-label="multiple select example" name="course_id[]">
             @foreach ($courses as $item)
                 <option {{ in_array($item->id, $courseSubjects) ? 'selected' : '' }} value="{{ $item->id }}">
                     {{ $item->title }}</option>

@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <table class="table table-striped ">
+    <table class="table table-striped  col-md-12">
         <thead>
             <tr>
                 <th>Title</th>
@@ -23,8 +23,8 @@
                     </td>
                     <td>{{ $item->created_at }}</td>
                     <td>{{ $item->updated_at }}</td>
-                    <td class="col-md-3">
-                        <div class="ml-0 d-flex justify-content-evenly">
+                    <td class="col-md-4">
+                        <div class="ml-0">
                             <button  data-id={{ $item->id }}  type="button" class=" btn btn-primary btn-sm bootbox-courses">
                                 Courses
                             </button>

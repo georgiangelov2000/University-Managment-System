@@ -13,7 +13,7 @@
             <input type="text" class="form-control form-control-sm" name="description">
         </div>
         <div class="mb-3">
-            <select class="form-select" multiple aria-label="multiple select example" name="course_id[]">
+            <select class="form-control form-control-sm col-md-12" multiple aria-label="multiple select example" name="course_id[]">
                 @foreach ($courses as $item)
                     <option value="{{ $item->id }}">{{ $item->title }}</option>
                 @endforeach

@@ -22,4 +22,9 @@ class Subject extends Model
         return $this->belongsToMany(Course::class,'subject_courses')->withPivot('course_id')->withTimestamps();
     }
 
+    public function exams()
+    {
+        return $this->hasMany(Subject::class,'subject_id','id');
+    }
+
 }

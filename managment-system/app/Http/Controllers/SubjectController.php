@@ -47,7 +47,6 @@ class SubjectController extends Controller
     public function update(Subject $subject, SubjectRequest $request)
     {
         $validated = $request->validated();
-
         $subject->update($validated);
 
         $courseId = $request->get('course_id');
@@ -89,6 +88,6 @@ class SubjectController extends Controller
         foreach ($detachedIds as $key => $value) {
             $subject->courses()->detach($value);
         }
-        return redirect()->back()->with('success','Successfully detached data');
+        return redirect()->back()->with('success','Successfully detached course');
     }
 }
