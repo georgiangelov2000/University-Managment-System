@@ -1,7 +1,50 @@
 $(document).ready(function () {
+    var table = $('.subjectsTable');
+
+    $('.subjectsTable').DataTable({
+        ajax: SUBJECT_INDEX,
+        processing: true,
+        serverSide: true,
+        columns: [{
+                "width": "10%",
+                data: 'title',
+                name: 'title',
+            },
+            {
+                "width": "15%",
+                data: 'description',
+                name: 'description',
+            },
+            {
+                data: 'created_at',
+                data: 'created_at',
+                render: function (data, type, row) {
+                    return moment(row.created_at, "HH:mm:ss").format("YYYY-MM-DD h:mm:ss");
+                }
+            },
+            {
+                data: 'updated_at',
+                render: function (data, type, row) {
+                    return moment(row.updated_at, "HH:mm:ss").format("YYYY-MM-DD h:mm:ss");
+                }
+            },
+            {
+                "width": "30%",
+                render: function (data, type, row) {
+                    var COURSES = '<a data-id=' + row.id + ' class="btn btn-primary btn-sm bootbox-courses">Courses</a>';
+                    var EDIT_SUBJECT = '<a href=' + SUBJECT_EDIT.replace(':id', row.id) + ' class="btn btn-secondary btn-sm">Edit</a>';
+                    var DETACH_COURSE = '<button data-id="' + row.id + '" class="mr-1 btn btn-sm btn-warning bootbox-detach-course">Detach Course</button>';
+                    var DELETE_SUBJECT = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteSubject">Delete</a>';
+                    return `<div class="text-center">${COURSES} ${EDIT_SUBJECT}  ${DELETE_SUBJECT}  ${DETACH_COURSE}</div>`;;
+
+                }
+            }
+        ]
+    });
 
 
-    $('.bootbox-courses').on('click', function () {
+    // AJAX ACTIONS
+    $(document).on("click", "", function () {
         let $currentId = $(this).attr('data-id');
         let html = '';
         $.ajax({
@@ -35,7 +78,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.bootbox-detach-course').on('click', function () {
+    $(document).on("click", ".bootbox-detach-course", function () {
         let currentId = $(this).attr('data-id');
         let html = '';
         $.ajax({
@@ -45,11 +88,11 @@ $(document).ready(function () {
                 if (data.length <= 0) {
                     html += '<p class="no-available-data p-2"><i class="fa fa-warning text-warning"> </i> No data available for this subject.</p>'
                 } else {
-                    html += "<form class='p-2 detachForm' method='post' action='"+POST_DETACH_COURSES.replace(':id',currentId)+"'>"
-                    +"<div class='form-group mb-2'>"+
+                    html += "<form class='p-2 detachForm' method='post' action='" + POST_DETACH_COURSES.replace(':id', currentId) + "'>" +
+                        "<div class='form-group mb-2'>" +
                         '<select class="form-control form-control-sm" multiple aria-label="multiple select example" name="course_id[]" >'
                     data.forEach(element => {
-                        html += "<option value='"+element.id+"'>"+element.title+"</option>";
+                        html += "<option value='" + element.id + "'>" + element.title + "</option>";
                     });
                     html += "</select></div><button class='btn btn-sm btn-primary' type='submit' onclick='onSubmit(event)'>Save</button></form>";
                 }
@@ -63,12 +106,13 @@ $(document).ready(function () {
                 console.log(errors);
             },
         });
+        table.DataTable().ajax.reload(null, false);
     });
 
 
 
 
-    $('.delete').on('click', function () {
+    $(document).on("click", ".deleteSubject", function () {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -83,37 +127,18 @@ $(document).ready(function () {
                 let $currentId = $(this).attr('data-id');
                 $.ajax({
                     method: "GET",
-                    url: DELETE_SUBJECT.replace(':id', $currentId),
+                    url: SUBJECT_DELETE.replace(':id', $currentId),
                     success: function (data) {
-                        location.reload();
+                        toastr['success']('Data has been deleted');
                     },
                     error: function (errors) {
-                        console.log(errors);
+                        toastr['error']('Data has not been deleted');
                     }
                 });
+                table.DataTable().ajax.reload(null, false);
             }
         })
     })
 
 
 });
-
-window.onSubmit = function (e) {
-    e.preventDefault();
-    let form = $('.detachForm');
-    $.ajax({
-        url:form.attr('action'),
-        type:form.attr('method'),
-        data:form.serialize(),
-        success: function (data) {
-            toastr.success('Successfully detached data');
-            setTimeout(() => {
-                location.reload();
-            }, 500);
-        },
-        error:function (error) {
-            console.log(error);
-            toastr.error('Unsuccessfully detached data');
-        }
-    })
-}

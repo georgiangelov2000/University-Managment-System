@@ -11,8 +11,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
-        return View::make('courses.index')->with('courses', $courses);
+        return View::make('courses.index');
     }
 
     public function create()
@@ -48,5 +47,6 @@ class CourseController extends Controller
     public function delete(Course $course)
     {
         $course->delete();
+        return redirect()->route('course.index');
     }
 }

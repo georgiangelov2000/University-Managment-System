@@ -1,8 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
-    "/js/course_action.js": "/js/course_action.js",
-    "/js/user_action.js": "/js/user_action.js",
-    "/js/subject_action.js": "/js/subject_action.js",
-    "/js/exam_action.js": "/js/exam_action.js",
+    "/js/users_managment/users_managment.js": "/js/users_managment/users_managment.js",
+    "/js/subjects_managment/subjects_managment.js": "/js/subjects_managment/subjects_managment.js",
+    "/js/courses_managment/courses_managment.js": "/js/courses_managment/courses_managment.js",
+    "/js/exams_managment/exams_managment.js": "/js/exams_managment/exams_managment.js",
+    "/js/exams_managment/user_has_exams.js": "/js/exams_managment/user_has_exams.js",
     "/css/app.css": "/css/app.css"
 }

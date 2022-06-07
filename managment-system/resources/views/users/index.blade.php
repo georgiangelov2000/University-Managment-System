@@ -2,54 +2,28 @@
 
 
 @section('content')
-    <table class="table table-striped ">
+    <table class="table table-striped table-bordered table-hover table-sm userTable ">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Age</th>
-                <th>Role</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>Action</th>
+                <th class="p-2">First Name</th>
+                <th class="p-2">Last Name</th>
+                <th class="p-2">Email</th>
+                <th class="p-2">Age</th>
+                <th class="p-2">Role</th>
+                <th class="p-2">Created</th>
+                <th class="p-2">Updated</th>
+                <th class="p-2">Action</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($users as $item)
-                <tr>
-                    <td>{{ $item->first_name }}</td>
-                    <td>{{ $item->last_name }}</td>
-                    <td>{{ $item->email }}</td>
-                    <td>{{ $item->age }}</td>
-                    <td>{{ $item->role }}</td>
-                    <td>{{ $item->created_at }}</td>
-                    <td>{{ $item->updated_at }}</td>
-                    <td>
-                        <div>
-                            <div class="">
-                                <button data-id={{ $item->id }} type="button"
-                                    class="mr-1 btn btn-primary btn-sm bootbox">
-                                    Course
-                                </button>
-                                <a href="{{ route('user.edit', $item->id) }}"
-                                    class="mr-1 btn btn-sm btn-warning">Edit</a>
-                                <a data-id={{ $item->id }} class="btn btn-danger btn-sm delete">
-                                    Delete
-                                </a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
     </table>
 
     @push('scripts')
+        <script src="{{ mix('js/users_managment/users_managment.js') }}"></script>
         <script type="text/javascript">
+            var USER_DATA = "{{ route('user.api.index') }}"
             var USERDETAILS = "{{ route('user.show', ':id') }}"
+            var USER_EDIT = "{{ route('user.edit', ':id') }}"
             var DELETEUSER = "{{ route('user.delete', ':id') }}"
         </script>
-        <script src="{{ mix('js/user_action.js') }}"></script>
     @endpush
 @endsection

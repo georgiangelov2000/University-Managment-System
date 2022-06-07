@@ -2,46 +2,26 @@
 
 
 @section('content')
-    <table class="table table-striped ">
+    <table class="table table-striped table-bordered table-hover table-sm coursesTable ">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Year</th>
-                <th>Fee</th>
-                <th>Created</th>
-                <th>Updated</th>
+                <th class="p-2">Title</th>
+                <th class="p-2">Year</th>
+                <th class="p-2">Fee</th>
+                <th class="p-2">Created</th>
+                <th class="p-2">Updated</th>
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($courses as $item)
-                <tr>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->year_of_course }}</td>
-                    <td>{{ $item->fee }}</td>
-                    <td>{{ $item->created_at }}</td>
-                    <td>{{ $item->updated_at }}</td>
-                    <td>
-                        <div class="">
-                            <button data-id={{ $item->id }} type="button" class="mr-1 btn btn-primary btn-sm bootbox">
-                                Users
-                            </button>
-                            <a href="{{route('course.edit',$item->id)}}" class="mr-1 btn btn-sm btn-warning">Edit</a>
-                            <a data-id={{ $item->id }} class="btn btn-danger btn-sm delete">
-                                Delete
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
     </table>
 
     @push('scripts')
+        <script src="{{ mix('js/courses_managment/courses_managment.js') }}"></script>
         <script type="text/javascript">
-            var COURSEDETAILS = "{{ route('course.show', ':id') }}"
-            var DELETECOURSE = "{{ route('course.delete', ':id') }}"
+            var COURSE_DATA = "{{ route('course.api.index') }}"
+            var COURSE_EDIT = "{{ route('course.edit', ':id') }}"
+            var COURSE_DELETE = "{{ route('course.delete', ':id') }}"
+            var COURSE_DETAILS = "{{ route('course.show', ':id') }}"
         </script>
-        <script type="text/javascript" src="{{ mix('js/course_action.js') }}"></script>
     @endpush
 @endsection

@@ -14,8 +14,7 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::all();
-        return View::make('subjects.index')->with('subjects', $subjects);
+        return View::make('subjects.index');
     }
 
     public function create()
@@ -79,7 +78,7 @@ class SubjectController extends Controller
     {
 
         $subject->delete();
-        return redirect()->route('subject.index')->with('success', 'Successfully deleted data');
+        return redirect()->route('subject.index');
     }
 
     public function detachCourse (Subject $subject,DetachCourseRequest $request) {
