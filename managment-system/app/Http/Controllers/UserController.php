@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\View;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::all();
-        return View::make('users.index')->with('users', $users);
+        return View::make('users.index');
     }
 
     public function create() {
@@ -23,7 +22,7 @@ class UserController extends Controller
     public function store(UserRequest $request) {
         $validated = $request->validated();
         User::create($validated);
-        return redirect()->route('user.index')->with('success','Successfully created data');
+        return redirect()->route('user.index');
     }
 
     public function show(User $user){
@@ -44,5 +43,6 @@ class UserController extends Controller
 
     public function delete(User $user){
         $user->delete();
+        return redirect()->route('user.index');
     }
 }

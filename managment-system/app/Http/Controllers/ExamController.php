@@ -14,9 +14,7 @@ class ExamController extends Controller
 {
     public function index()
     {
-        $exams = Exam::all();
-        // dd($exams);
-        return View::make('exams.index')->with('exams', $exams);
+        return View::make('exams.index');
     }
 
     public function create()
@@ -80,8 +78,7 @@ class ExamController extends Controller
 
     public function show(Exam $exam)
     {
-        $students = $exam->users()->get();
-        return View::make('exams.show', compact('exam'))->with('students', $students);
+        return View::make('exams.user_has_exams', compact('exam'));
     }
 
     public function detachStudent(Exam $exam, Request $request)

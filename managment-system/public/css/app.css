@@ -6,6 +6,7 @@
     z-index: 100;
     padding: 48px 0 0;
     box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
+    min-height: 100vh;
 }
 header .form-control-dark {
     color: #fff !important;
@@ -52,4 +53,10 @@ header .form-control-dark {
     overflow: scroll;
 }
 
+/* Datatable */
+
+.dataTable tbody td{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
 

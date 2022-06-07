@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\ApiCoursesController;
+use App\Http\Controllers\Api\ApiExamController;
+use App\Http\Controllers\Api\ApiSubjectController;
+use App\Http\Controllers\Api\ApiUserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\SubjectController;
@@ -63,4 +67,14 @@ Route::prefix('exams')->group(function () {
     Route::get('/delete/{exam}', [ExamController::class, 'delete'])->name('exam.delete');
     Route::get('/show/{exam}', [ExamController::class, 'show'])->name('exam.show');
     Route::post('/student/detach/{exam}', [ExamController::class, 'detachStudent'])->name('exam.student.detach');
+});
+
+
+Route::prefix('api')->group(function () {
+    Route::get('/users', [ApiUserController::class, 'index'])->name('user.api.index');
+    Route::get('/subjects', [ApiSubjectController::class, 'index'])->name('subject.api.index');
+    Route::get('/courses', [ApiCoursesController::class, 'index'])->name('course.api.index');
+    Route::get('/exams', [ApiExamController::class, 'index'])->name('exam.api.index');
+
+    Route::get('/exam/{exam}/users', [ApiExamController::class, 'users'])->name('exam.api.user');
 });

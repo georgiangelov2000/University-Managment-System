@@ -2,34 +2,23 @@
 
 
 @section('content')
-    <table class="table table-striped ">
+    <table class="table table-striped table-bordered table-hover table-sm  examsTable ">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Start Exam</th>
-                <th>End Exam</th>
-                <th>Students</th>
+                <th class="p-2">Title</th>
+                <th class="p-2">Start Exam</th>
+                <th class="p-2">End Exam</th>
+                <th class="p-2">Actions</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($exams as $item)
-                <tr>
-                    <td>{{ $item->subjects->title}}</td>
-                    <td>{{ $item->date_start_exam}}</td>
-                    <td>{{ $item->date_end_exam}}</td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="{{route('exam.show',$item->id)}}" >
-                            Students
-                        </a>
-                        <a class="btn btn-sm btn-warning" href="{{route('exam.edit',$item->id)}}" >
-                            Edit
-                        </a>
-                        <a class="btn btn-sm btn-danger" href="{{route('exam.delete',$item->id)}}" >
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
     </table>
+    @push('scripts')
+    <script src="{{ mix('js/exams_managment/exams_managment.js') }}"></script>
+        <script type="text/javascript">
+            var EXAM_EDIT = "{{route('exam.edit',':id')}}";
+            var EXAM_DELETE = "{{route('exam.delete',':id')}}";
+            var EXAM_SHOW = "{{route('exam.show',':id')}}";
+            var EXAM_API_INDEX = "{{route('exam.api.index')}}";
+        </script>
+    @endpush
 @endsection
