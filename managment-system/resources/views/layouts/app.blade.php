@@ -13,21 +13,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.min.css"/>
 </head>
 
 <body>
-    <header class="navbar shadow-sm navbar-dark sticky-top bg-dark flex-md-nowrap p-0 pt-2 pb-2 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-            </div>
-        </div>
-    </header>
+
     <div class="container-fluid">
         <div class="row">
 
@@ -35,7 +25,12 @@
                 @include('sidebar')
             @show
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="container mt-5">
+                <div class="container-fluid">
+                    <div class="row mb-2 mt-2">
+                        <div class="col-12">
+                            <h2 class="m-0">Student Managment System</h2>
+                        </div>
+                    </div>
                     @yield('content')
                 </div>
             </main>
@@ -52,6 +47,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.3/bootbox.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js"></script>
 
     <script>
         @if (Session::has('message'))

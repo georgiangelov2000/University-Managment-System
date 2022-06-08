@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <form method="post" action="{{ route('subject.update', $subject->id) }}" class="card shadow-sm p-3 mt-5">
+    <form method="post" action="{{ route('subject.update', $subject->id) }}" class="card p-3">
         @csrf
         <div class="mb-3">
             <label for="" class="form-label">Title</label>
@@ -18,6 +18,8 @@
                     {{ $item->title }}</option>
             @endforeach
         </select>
-        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </div>
     </form>
 @endsection

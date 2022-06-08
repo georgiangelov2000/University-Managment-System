@@ -1,7 +1,7 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse pt-0">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse pt-0">
     <ul class="list-unstyled ps-0 mt-3">
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#users" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#users" class="nav-link collapsed active">
                 <i class="fa fa-user"></i> Users
             </a>
             <ul class="sub-menu collapse" id="users">
@@ -12,7 +12,7 @@
             </ul>
         </li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#studentCourses" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#studentCourses" class="nav-link collapsed active">
                 <i class="fa fa-book"></i> Courses
             </a>
             <ul class="sub-menu collapse" id="studentCourses">
@@ -22,9 +22,8 @@
                         class="link-dark d-inline-flex text-decoration-none rounded">Manage Courses</a></li>
             </ul>
         </li>
-        <li class="border-top my-3"></li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#studentSubjects" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#studentSubjects" class="nav-link collapsed active">
                 <i class="fas fa-book-reader"></i> Subjects
             </a>
             <ul class="sub-menu collapse" id="studentSubjects">
@@ -35,7 +34,7 @@
             </ul>
         </li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#studentsExams" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#studentsExams" class="nav-link collapsed active">
                 <i class="fa fa-check" aria-hidden="true"></i> Exams
             </a>
             <ul class="sub-menu collapse" id="studentsExams">
@@ -45,9 +44,8 @@
                         class="link-dark d-inline-flex text-decoration-none rounded">Manage Exams</a></li>
             </ul>
         </li>
-        <li class="border-top my-3"></li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#studentPrograms" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#studentPrograms" class="nav-link collapsed active">
                 <i class="fa-solid fa-person-walking"></i> Attendances
             </a>
             <ul class="sub-menu collapse" id="studentPrograms">
@@ -58,7 +56,7 @@
             </ul>
         </li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#studentPrograms" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#studentPrograms" class="nav-link collapsed active">
                 <i class="fas fa-chalkboard-teacher"></i> Programs
             </a>
             <ul class="sub-menu collapse" id="studentPrograms">
@@ -68,9 +66,8 @@
                         class="link-dark d-inline-flex text-decoration-none rounded">Manage Programs</a></li>
             </ul>
         </li>
-        <li class="border-top my-3"></li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#staffSalaries" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#staffSalaries" class="nav-link collapsed active">
                 <i class="fa-solid fa-sack-dollar"></i> Staff Salaries
             </a>
             <ul class="sub-menu collapse" id="staffSalaries">
@@ -81,7 +78,7 @@
             </ul>
         </li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#staffHolidays" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#staffHolidays" class="nav-link collapsed active">
                <i class="fas fa-umbrella-beach"></i> Staff Holidays
             </a>
             <ul class="sub-menu collapse" id="staffHolidays">
@@ -91,9 +88,8 @@
                         class="link-dark d-inline-flex text-decoration-none rounded">Manage Holidays</a></li>
             </ul>
         </li>
-        <li class="border-top my-3"></li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#payments" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#payments" class="nav-link collapsed active">
               <i class="fab fa-cc-visa"></i>  Payments
             </a>
             <ul class="sub-menu collapse" id="payments">
@@ -105,7 +101,7 @@
         </li>
 
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#studentHostels" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#studentHostels" class="nav-link collapsed active">
                <i class="fas fa-bed"></i> Student Hostels
             </a>
             <ul class="sub-menu collapse" id="studentHostels">
@@ -116,10 +112,9 @@
             </ul>
         </li>
 
-        <li class="border-top my-3"></li>
 
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#marks" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#marks" class="nav-link collapsed active">
                 <i class="fa fa-check" aria-hidden="true"></i> Marks
             </a>
             <ul class="sub-menu collapse" id="marks">
@@ -131,7 +126,7 @@
         </li>
 
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#products" class="collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#products" class="nav-link collapsed active">
                 <i class="fa fa-gavel" aria-hidden="true"></i>  Liquidations
             </a>
             <ul class="sub-menu collapse" id="products">

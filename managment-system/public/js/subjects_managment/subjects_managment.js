@@ -43,7 +43,7 @@ $(document).ready(function () {
     }]
   }); // AJAX ACTIONS
 
-  $(document).on("click", "", function () {
+  $(document).on("click", ".bootbox-courses", function () {
     var $currentId = $(this).attr('data-id');
     var html = '';
     $.ajax({
