@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="post" class="card shadow-sm p-3 mt-5" action="{{ route('exam.store') }}">
+    <form method="post" class="card p-3" action="{{ route('exam.store') }}">
         @csrf
         <div class="mb-3">
             <label for="">Subject</label>

@@ -44,7 +44,7 @@ $(document).ready(function () {
 
 
     // AJAX ACTIONS
-    $(document).on("click", "", function () {
+    $(document).on("click", ".bootbox-courses", function () {
         let $currentId = $(this).attr('data-id');
         let html = '';
         $.ajax({

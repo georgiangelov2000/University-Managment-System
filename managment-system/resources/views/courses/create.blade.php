@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <form method="post" action="{{route('course.store')}}" class="card shadow-sm p-3 mt-5">
+    <form method="post" action="{{route('course.store')}}" class="card p-3">
         @csrf
         <div class="mb-3">
             <label for="" class="form-label">Title</label>
@@ -16,6 +16,8 @@
             <label for="" class="form-label">Fee</label>
             <input type="text" class="form-control form-control-sm" name="fee">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </div>
     </form>
 @endsection

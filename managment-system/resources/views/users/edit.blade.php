@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <form method="post" action="{{route('user.update',$user->id)}}" class="card shadow-sm p-3 mt-5">
+    <form method="post" action="{{route('user.update',$user->id)}}" class="card p-3">
         @csrf
         <div class="mb-3">
             <label for="" class="form-label">First Name</label>
@@ -39,7 +39,9 @@
                 <option value="student">Student</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </div>
     </form>
 
     @push('scripts')
