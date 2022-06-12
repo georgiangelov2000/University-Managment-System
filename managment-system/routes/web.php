@@ -4,10 +4,6 @@ use App\Http\Controllers\Api\ApiCoursesController;
 use App\Http\Controllers\Api\ApiExamController;
 use App\Http\Controllers\Api\ApiSubjectController;
 use App\Http\Controllers\Api\ApiUserController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\ExamController;
-use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,53 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('layouts.app');
 });
 
-Route::prefix('users')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('user.index');
-    Route::get('/create', [UserController::class, 'create'])->name('user.create');
-    Route::post('/store', [UserController::class, 'store'])->name('user.store');
-    Route::post('/update/{user}', [UserController::class, 'update'])->name('user.update');
-    Route::get('/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
-    Route::get('/delete/{user}', [UserController::class, 'delete'])->name('user.delete');
-    Route::get('/show/{user}', [UserController::class, 'show'])->name('user.show');
-
-});
-
-Route::prefix('courses')->group(function () {
-    Route::get('/', [CourseController::class, 'index'])->name('course.index');
-    Route::get('/create', [CourseController::class, 'create'])->name('course.create');
-    Route::post('/store', [CourseController::class, 'store'])->name('course.store');
-    Route::post('/update/{course}', [CourseController::class, 'update'])->name('course.update');
-    Route::get('/edit/{course}', [CourseController::class, 'edit'])->name('course.edit');
-    Route::get('/delete/{course}', [CourseController::class, 'delete'])->name('course.delete');
-    Route::get('/show/{course}', [CourseController::class, 'show'])->name('course.show');
-});
-
-Route::prefix('subjects')->group(function () {
-    Route::get('/', [SubjectController::class, 'index'])->name('subject.index');
-    Route::get('/create', [SubjectController::class, 'create'])->name('subject.create');
-    Route::post('/store', [SubjectController::class, 'store'])->name('subject.store');
-    Route::post('/update/{subject}', [SubjectController::class, 'update'])->name('subject.update');
-    Route::get('/edit/{subject}', [SubjectController::class, 'edit'])->name('subject.edit');
-    Route::get('/delete/{subject}', [SubjectController::class, 'delete'])->name('subject.delete');
-    Route::get('/show/{subject}', [SubjectController::class, 'show'])->name('subject.show');
-    Route::get('/courses/{subject}', [SubjectController::class, 'getCourse'])->name('subject.course');
-    Route::post('/detach/course/{subject}', [SubjectController::class, 'detachCourse'])->name('subject.course.detach');
-});
-
-Route::prefix('exams')->group(function () {
-    Route::get('/', [ExamController::class, 'index'])->name('exam.index');
-    Route::get('/create', [ExamController::class, 'create'])->name('exam.create');
-    Route::post('/store', [ExamController::class, 'store'])->name('exam.store');
-    Route::post('/update/{exam}', [ExamController::class, 'update'])->name('exam.update');
-    Route::get('/edit/{exam}', [ExamController::class, 'edit'])->name('exam.edit');
-    Route::get('/delete/{exam}', [ExamController::class, 'delete'])->name('exam.delete');
-    Route::get('/show/{exam}', [ExamController::class, 'show'])->name('exam.show');
-    Route::post('/student/detach/{exam}', [ExamController::class, 'detachStudent'])->name('exam.student.detach');
-});
+require_once __DIR__ . '/route/courses.php';
+require_once __DIR__ . '/route/exams.php';
+require_once __DIR__ . '/route/subjects.php';
+require_once __DIR__ . '/route/users.php';
 
 
 Route::prefix('api')->group(function () {

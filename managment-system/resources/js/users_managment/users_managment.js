@@ -5,7 +5,15 @@ $(document).ready(function () {
         ajax: USER_DATA,
         processing: true,
         serverSide: true,
-        columns: [{
+        order: [[1, 'desc']],
+        columns: [
+            {
+                data:'picture',
+                render:function(data,type,row) {
+                    return '<div class="text-center w-100 m-auto"><img class="rounded w-100" src="'+row.picture+'" /> </div>';
+                }
+            },
+            {
                 "width": "10%",
                 data: 'first_name',
                 name: 'first_name',
@@ -32,20 +40,26 @@ $(document).ready(function () {
                 name: 'role',
             },
             {
-                data: 'created_at',
+                "width": "10%",
+                data: 'course',
+                name: 'course',
+            },
+            {
+                "width": "10%",
                 data: 'created_at',
                 render: function(data,type,row) {
-                    return moment(row.updated_at, "HH:mm:ss").format("YYYY-MM-DD h:mm:ss");
+                    return moment(row.updated_at.date, "HH:mm:ss").format("YYYY-MM-DD h:mm:ss");
                 }
             },
             {
+                "width": "10%",
                 data: 'updated_at',
                 render: function(data,type,row) {
-                    return moment(row.updated_at, "HH:mm:ss").format("YYYY-MM-DD h:mm:ss");
+                    return moment(row.updated_at.date, "HH:mm:ss").format("YYYY-MM-DD h:mm:ss");
                 }
             },
             {
-                "width": "20%",
+                "width": "15%",
                 render: function (data, type, row) {
                     var EDIT_USER = '<a href=' + USER_EDIT.replace(':id', row.id) + ' class="mr-1 btn btn-sm btn-warning editUser">Edit</a>';
                     var DELETE_USER = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteUser">Delete</a>';
@@ -54,7 +68,11 @@ $(document).ready(function () {
 
                 }
             }
-        ]
+        ],
+        'columnDefs': [ {
+            'targets': [0,6,7,8,9],
+            'orderable': false,
+         }]
     });
 
     //AJAX ACTIONS

@@ -14,7 +14,7 @@ class ExamRequest extends FormRequest
     public function rules()
     {
         return [
-            'subject_id' => 'required',
+            'subject_id' => 'required|unique:exams,subject_id',
             'date_start_exam' => 'required|date',
             'date_end_exam' => 'required|date',
         ];

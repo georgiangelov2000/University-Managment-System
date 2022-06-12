@@ -2,9 +2,19 @@
 
 
 @section('content')
-    <form method="post" action="{{route('user.update',$user->id)}}" class="card p-3">
+    <form method="post" action="{{route('user.update',$user->id)}}" class="card p-3" enctype="multipart/form-data" >
         @csrf
-        <div class="mb-3">
+        <div class="mb-3 w-50">
+            <img src="{{ asset('storage/users/'.$user->picture) }}" class="img-thumbnail w-25" alt="">
+        </div>
+        <div class="custom-file mb-3">
+            <div class="custom-file mb-3">
+                <input type="file" name="picture" id="customFile">
+                <label class="custom-file-label" for="customFile">
+                    {{$user->picture}}
+                </label>
+            </div>
+        </div>        <div class="mb-3">
             <label for="" class="form-label">First Name</label>
             <input type="text" value="{{ $user->first_name }}" class="form-control form-control-sm" name="first_name">
         </div>

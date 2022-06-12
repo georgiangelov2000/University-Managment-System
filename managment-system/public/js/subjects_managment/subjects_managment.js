@@ -40,6 +40,10 @@ $(document).ready(function () {
         return "<div class=\"text-center\">".concat(COURSES, " ").concat(EDIT_SUBJECT, "  ").concat(DELETE_SUBJECT, "  ").concat(DETACH_COURSE, "</div>");
         ;
       }
+    }],
+    'columnDefs': [{
+      'targets': [2, 3, 4],
+      'orderable': false
     }]
   }); // AJAX ACTIONS
 

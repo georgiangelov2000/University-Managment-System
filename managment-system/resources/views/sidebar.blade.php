@@ -45,6 +45,17 @@
             </ul>
         </li>
         <li class="mb-1">
+            <a href="#" data-toggle="collapse" data-target="#marks" class="nav-link collapsed active">
+                <i class="fa fa-check" aria-hidden="true"></i> Marks
+            </a>
+            <ul class="sub-menu collapse" id="marks">
+                <li><a href="{{ route('subject.create') }}"
+                        class="link-dark d-inline-flex text-decoration-none rounded">Create Mark</a></li>
+                <li><a href="{{ route('subject.index') }}"
+                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Marks</a></li>
+            </ul>
+        </li>
+        <li class="mb-1">
             <a href="#" data-toggle="collapse" data-target="#studentPrograms" class="nav-link collapsed active">
                 <i class="fa-solid fa-person-walking"></i> Attendances
             </a>
@@ -109,19 +120,6 @@
                         class="link-dark d-inline-flex text-decoration-none rounded">Create Hostel</a></li>
                 <li><a href="{{ route('subject.index') }}"
                         class="link-dark d-inline-flex text-decoration-none rounded">Manage Hostels</a></li>
-            </ul>
-        </li>
-
-
-        <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#marks" class="nav-link collapsed active">
-                <i class="fa fa-check" aria-hidden="true"></i> Marks
-            </a>
-            <ul class="sub-menu collapse" id="marks">
-                <li><a href="{{ route('subject.create') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Create Mark</a></li>
-                <li><a href="{{ route('subject.index') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Marks</a></li>
             </ul>
         </li>
 

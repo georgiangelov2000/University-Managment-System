@@ -39,7 +39,11 @@ $(document).ready(function () {
 
                 }
             }
-        ]
+        ],
+        'columnDefs': [ {
+            'targets': [2,3,4],
+            'orderable': false,
+         }]
     });
 
 

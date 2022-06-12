@@ -8,6 +8,8 @@ use App\Models\Exam;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
 class ExamController extends Controller
@@ -23,7 +25,21 @@ class ExamController extends Controller
         $subjects = Subject::all();
         $users = User::all();
 
-        return View::make('exams.create')->with('courses', $courses)->with('subjects', $subjects)->with('users', $users);
+        $attached_subjects = DB::table('exams')->select('subject_id')->get()->toArray();
+
+        $attached_ids = [];
+
+        foreach ($attached_subjects as $subject) {
+            $attached_ids = [
+                'id' => $subject->subject_id,
+            ];
+        }
+
+        return View::make('exams.create')
+        ->with('courses', $courses)
+        ->with('subjects', $subjects)
+        ->with('users', $users)
+        ->with('attached_ids', $attached_ids);
     }
 
     public function store(ExamRequest $request)
@@ -37,7 +53,7 @@ class ExamController extends Controller
         $users = $request->get('user_id');
         $exam->users()->attach($users);
 
-        return View::make('exams.index');
+        return redirect()->route('exam.index')->with('success', 'Successfully created data');
     }
 
     public function edit(Exam $exam)
@@ -83,8 +99,8 @@ class ExamController extends Controller
 
     public function detachStudent(Exam $exam, Request $request)
     {
-        $userID = $request->get('user_id');
-        $exam->users()->detach($userID);
+        $user_id = $request->input('user_id');
+        $exam->users()->detach($user_id);
         return redirect()->back()->with('success', 'Successfully detached student');
     }
 

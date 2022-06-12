@@ -9,6 +9,7 @@
                     data-exam-id={{ $exam->id }}>
                     <thead>
                         <tr>
+                            <th class="p-2">Picture</th>
                             <th class="p-2">First name</th>
                             <th class="p-2">Last name</th>
                             <th class="p-2">Age</th>
@@ -26,6 +27,8 @@
             <script src="{{ mix('js/exams_managment/user_has_exams.js') }}"></script>
             <script type="text/javascript">
                 var USER_VIEW = "{{ route('exam.api.user', ':id') }}";
+                var STUDENT_DETACH = "{{route('exam.student.detach',':id')}}";
+                var USER_IS_TAKEN_EXAM = "{{route('user.exam.taken',':id')}}";
             </script>
         @endpush
     @endsection

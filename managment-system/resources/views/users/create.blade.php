@@ -2,8 +2,12 @@
 
 
 @section('content')
-    <form method="post" action="{{ route('user.store') }}" class="card p-3">
+    <form method="post" action="{{ route('user.store') }}" class="card p-3" enctype="multipart/form-data" >
       @csrf
+        <div class="custom-file mb-3">
+            <input type="file" name="picture" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
         <div class="mb-3">
             <label for="" class="form-label">First name</label>
             <input type="text" class="form-control form-control-sm" name="first_name">
