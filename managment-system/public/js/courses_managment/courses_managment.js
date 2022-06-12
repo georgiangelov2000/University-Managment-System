@@ -42,6 +42,10 @@ $(document).ready(function () {
         return "<div class=\"text-center\">".concat(EDIT_COURSE, "  ").concat(DELETE_COURSE, "  ").concat(USERS_VIEW, "</div>");
         ;
       }
+    }],
+    'columnDefs': [{
+      'targets': [3, 4, 5],
+      'orderable': false
     }]
   }); //AJAX ACTIONS
 

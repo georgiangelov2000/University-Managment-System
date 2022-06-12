@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'picture',
         'first_name',
         'last_name',
         'email',
@@ -25,6 +26,7 @@ class User extends Authenticatable
         'role',
         'course_id',
         'age',
+        'exam_is_taken'
     ];
 
     use HasFactory;

@@ -25,6 +25,7 @@ $(document).ready(function () {
                 }
             },
             {
+                'width':'15%',
                 render:function(data,type,row) {
                     var STUDENTS_VIEW = '<a href='+EXAM_SHOW.replace(':id',row.id)+' class="btn btn-primary btn-sm">Students</a>'
                     var EDIT_EXAM = '<a href='+EXAM_EDIT.replace(':id',row.id)+' class="btn btn-warning btn-sm">Edit</a>';
@@ -32,7 +33,11 @@ $(document).ready(function () {
                     return `<div> ${STUDENTS_VIEW} ${EDIT_EXAM} ${DELETE_EXAM} </div>`
                 }
             }
-        ]
+        ],
+        'columnDefs': [ {
+            'targets': [3],
+            'orderable': false,
+         }]
     });
 
     $(document).on("click", ".deleteExam", function () {

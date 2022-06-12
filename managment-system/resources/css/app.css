@@ -8,6 +8,11 @@
     box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
     min-height: 100vh;
     background-color: #343a40;
+    font-size: 0.85rem !important;
+}
+table th,td {
+    font-size: 0.85rem !important;
+
 }
 .sidebar a{
     color: #c2c7d0;
@@ -76,4 +81,9 @@ header .form-control-dark {
 }
 main {
     background-color: #f4f6f9;
+}
+
+form select option:disabled {
+    background: rgb(206, 206, 206);
+    color: white;
 }

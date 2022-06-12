@@ -1,12 +1,18 @@
 $(document).ready(function () {
+    var table = $('.userHasExams');
 
     var EXAM_ID= $('.userHasExams').attr('data-exam-id');
-    console.log(USER_VIEW.replace(':id',EXAM_ID));
     $('.userHasExams').DataTable({
         ajax: USER_VIEW.replace(':id',EXAM_ID),
         processing: true,
         serverSide: true,
+        order: [[1, 'desc']],
         columns: [
+            {
+                render:function(data,type,row) {
+                    return '<div class="text-center"><img class="rounded w-50" src="'+row.picture+'" /> </div>';
+                }
+            },
             {
                 render:function(data,type,row) {
                     return row.first_name;
@@ -38,24 +44,108 @@ $(document).ready(function () {
                 }
             },
             {
-                "width": "30%",
+                "width": "25%",
                 render:function(date,type,row) {
-                    var STUDENT_DETACH = "<a class='btn btn-danger btn-sm'>Remove</a>";
+                    var FAILED_EXAM;
+                    var TAKEN_EXAM;
 
-                    var FAILED_EXAM = "<div class='form-check'>"+
-                        "<input type='checkbox' class='form-check-input' id='exampleCheck1'>"+
-                        "<label class='form-check-label' for='exampleCheck1'>Exam failed</label>"+
-                    "</div>";
+                    var DETATCH_USER = "<button type='button' data-id="+row.id+" class='btn btn-danger btn-sm detachUser'>Remove</button>";
 
-                    var TAIKEN_EXAM  = "<div class='form-check'>" +
-                    "<input type='checkbox' class='form-check-input' id='exampleCheck1'>" +
-                    "<label class='form-check-label' for='exampleCheck1'>Exam taken</label>" +
-                "</div>";
+                    if(row.exam_is_taken) {
+                            FAILED_EXAM = "<div class='form-check'>"+
+                                "<input  data-id="+row.id+" type='checkbox' class='form-check-input' name='exam_is_taken' value='0' id='failed_exam'>"+
+                                "<label class='form-check-label' for='failed_exam'>Exam failed</label>"+
+                            "</div>";
 
-                        return `<div class="d-flex align-items-center justify-content-between">${STUDENT_DETACH} ${FAILED_EXAM} ${TAIKEN_EXAM}</div>`
+                            TAKEN_EXAM  = "<div class='form-check'>" +
+                                "<input checked data-id="+row.id+" type='checkbox' class='form-check-input' name='exam_is_taken' value='1' id='taken_exam'>" +
+                                "<label class='form-check-label' for='taken_exam'>Exam taken</label>" +
+                            "</div>";
+                    } else {
+                        FAILED_EXAM = "<div class='form-check'>"+
+                            "<input checked data-id="+row.id+" type='checkbox' class='form-check-input' name='exam_is_taken' value='0' id='failed_exam'>"+
+                            "<label class='form-check-label' for='failed_exam'>Exam failed</label>"+
+                        "</div>";
+
+                        TAKEN_EXAM  = "<div class='form-check'>" +
+                            "<input  data-id="+row.id+" type='checkbox' class='form-check-input' name='exam_is_taken' value='1' id='taken_exam'>" +
+                            "<label class='form-check-label' for='taken_exam'>Exam taken</label>" +
+                        "</div>";
+                    }
+                        return `<div class="d-flex align-items-center justify-content-between form-group">${DETATCH_USER} ${FAILED_EXAM} ${TAKEN_EXAM}</div>`
                 }
             }
 
-        ]
+        ],
+        'columnDefs': [ {
+            'targets': [0,5,6,7],
+            'orderable': false,
+         }]
     });
+
+    $(document).on('click','input[name="exam_is_taken"]',function(e){
+        var user_id = $(this).attr('data-id');
+        var is_taken_value = $(this).val();
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            background: '#fff',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, updated it!'
+        }).then((result)=>{
+            if(result.isConfirmed){
+                $.ajax({
+                    method: 'POST',
+                    url: USER_IS_TAKEN_EXAM.replace(':id',user_id),
+                    data:{
+                        'exam_is_taken': is_taken_value
+                    },
+                    success: function (data) {
+                        toastr['success']('Data has been updated');
+                    },
+                    error: function (errors) {
+                        toastr['error']('Data has not been updated');
+                    }
+                })
+                table.DataTable().ajax.reload(null, false);
+            }
+        })
+    })
+
+    $(document).on("click", ".detachUser", function (e) {
+        var user_id = $(this).attr('data-id');
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            background: '#fff',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    method: "GET",
+                    url: STUDENT_DETACH.replace(':id', EXAM_ID),
+                    data: {
+                        'user_id':user_id
+                    },
+                    success: function (data) {
+                        toastr['success']('Data has been deleted');
+                    },
+                    error: function (errors) {
+                        toastr['error']('Data has not been deleted');
+                    }
+                });
+                table.DataTable().ajax.reload(null, false);
+            }
+        })
+    })
+
 });

@@ -25,12 +25,17 @@ $(document).ready(function () {
         return row.date_end_exam;
       }
     }, {
+      'width': '15%',
       render: function render(data, type, row) {
         var STUDENTS_VIEW = '<a href=' + EXAM_SHOW.replace(':id', row.id) + ' class="btn btn-primary btn-sm">Students</a>';
         var EDIT_EXAM = '<a href=' + EXAM_EDIT.replace(':id', row.id) + ' class="btn btn-warning btn-sm">Edit</a>';
         var DELETE_EXAM = '<a a data-id=' + row.id + ' type="button" class="btn btn-danger btn-sm deleteExam">Delete</a>';
         return "<div> ".concat(STUDENTS_VIEW, " ").concat(EDIT_EXAM, " ").concat(DELETE_EXAM, " </div>");
       }
+    }],
+    'columnDefs': [{
+      'targets': [3],
+      'orderable': false
     }]
   });
   $(document).on("click", ".deleteExam", function () {
