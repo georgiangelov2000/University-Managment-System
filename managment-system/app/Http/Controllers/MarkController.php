@@ -1,40 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\MarkRequest;
+use App\Models\Mark;
+use App\Models\Subject;
 use App\Models\User;
-use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
-class ApiUserController extends Controller
+class MarkController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $users =User::where('role','!=','admin')->get();
 
-        $serializer = [];
-        foreach ($users as $key => $value) {
-           $serializer[] =  [
-                'id' => $value->id ?? '',
-                'picture' => asset('storage/users/'.$value->picture),
-                'first_name' => $value->first_name ?? '',
-                'last_name' => $value->last_name ?? '',
-                'email' => $value->email ?? '',
-                'age' => $value->age ?? '',
-                'role' => $value->role ?? '',
-                'course' => $value->courses->title ?? '',
-                'created_at' => $value->created_at ?? '',
-                'updated_at' => $value->updated_at ?? '',
-            ];
-        }
-        return Datatables::of($serializer)->make(true);
+    public function index(){
+        $users = User::all();
+        $subjects =Subject::all();
+
+        return View::make('marks.index',['subjects' =>$subjects, 'users' =>$users]);
     }
 
     /**
@@ -44,7 +27,10 @@ class ApiUserController extends Controller
      */
     public function create()
     {
-        //
+        $subjects = Subject::all();
+        $users = User::all();
+
+        return View::make('marks.create',['subjects' => $subjects],['users' => $users]);
     }
 
     /**
@@ -53,9 +39,19 @@ class ApiUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MarkRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $mark = new Mark();
+        foreach ($validated['subject_id'] as $key => $value) {
+            $mark->create([
+                'user_id' => $validated['user_id'],
+                'subject_id' => $validated['subject_id'][$key],
+                'mark' => $validated['mark'][$key],
+                'date_of_mark' => $validated['date_of_mark'][$key],
+            ]);
+        }
+        return redirect()->back()->with('success', 'Successfully created data');
     }
 
     /**
@@ -89,7 +85,7 @@ class ApiUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -98,8 +94,9 @@ class ApiUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $mark = $request->get('mark');
+        Mark::find($mark)->delete();
     }
 }

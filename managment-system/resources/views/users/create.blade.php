@@ -17,6 +17,17 @@
             <input type="text" class="form-control form-control-sm" name="last_name">
         </div>
         <div class="mb-3">
+            <label for="">Gender</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label">Male</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label">Famale</label>
+            </div>
+        </div>
+        <div class="mb-3">
             <label for="" class="form-label">Email address</label>
             <input type="email" class="form-control form-control-sm" name="email">
         </div>
