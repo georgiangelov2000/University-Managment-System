@@ -66,5 +66,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Exam::class,'user_has_exams')->withTimestamps();
     }
 
+    public function subjects(){
+        return $this->belongsToMany(Subject::class,'marks')->withPivot('mark');
+    }
+
 
 }

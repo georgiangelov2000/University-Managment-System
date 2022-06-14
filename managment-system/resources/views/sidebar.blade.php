@@ -35,7 +35,7 @@
         </li>
         <li class="mb-1">
             <a href="#" data-toggle="collapse" data-target="#studentsExams" class="nav-link collapsed active">
-                <i class="fa fa-check" aria-hidden="true"></i> Exams
+                <i class="fas fa-bell" aria-hidden="true"></i> Exams
             </a>
             <ul class="sub-menu collapse" id="studentsExams">
                 <li><a href="{{ route('exam.create') }}"
@@ -49,20 +49,20 @@
                 <i class="fa fa-check" aria-hidden="true"></i> Marks
             </a>
             <ul class="sub-menu collapse" id="marks">
-                <li><a href="{{ route('subject.create') }}"
+                <li><a href="{{ route('mark.create') }}"
                         class="link-dark d-inline-flex text-decoration-none rounded">Create Mark</a></li>
-                <li><a href="{{ route('subject.index') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Marks</a></li>
+                <li><a href="{{ route('mark.index') }}"
+                    class="link-dark d-inline-flex text-decoration-none rounded">Manage Marks</a></li>
             </ul>
         </li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#studentPrograms" class="nav-link collapsed active">
+            <a href="#" data-toggle="collapse" data-target="#attendances" class="nav-link collapsed active">
                 <i class="fa-solid fa-person-walking"></i> Attendances
             </a>
-            <ul class="sub-menu collapse" id="studentPrograms">
-                <li><a href="{{ route('subject.create') }}"
+            <ul class="sub-menu collapse" id="attendances">
+                <li><a href="{{ route('attendance.create') }}"
                         class="link-dark d-inline-flex text-decoration-none rounded">Create Attendance</a></li>
-                <li><a href="{{ route('subject.index') }}"
+                <li><a href="{{ route('attendance.index') }}"
                         class="link-dark d-inline-flex text-decoration-none rounded">Manage Attendances</a></li>
             </ul>
         </li>

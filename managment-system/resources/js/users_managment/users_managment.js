@@ -61,9 +61,9 @@ $(document).ready(function () {
             {
                 "width": "15%",
                 render: function (data, type, row) {
-                    var EDIT_USER = '<a href=' + USER_EDIT.replace(':id', row.id) + ' class="mr-1 btn btn-sm btn-warning editUser">Edit</a>';
-                    var DELETE_USER = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteUser">Delete</a>';
-                    var COURSE_VIEW = '<button data-id="' + row.id + '" class="mr-1 btn btn-sm btn-primary courseBootbox">Courses</button>';
+                    var EDIT_USER = '<a href=' + USER_EDIT.replace(':id', row.id) + ' class="btn btn-sm btn-warning editUser" title="Edit"><i class="fa fa-edit"></i></a>';
+                    var DELETE_USER = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteUser" title="Delete"><i class="fa fa-trash"></i></a>';
+                    var COURSE_VIEW = '<button data-id="' + row.id + '" class="mr-1 btn btn-sm btn-primary courseBootbox" title="Courses"><i class="fas fa-book-open"></i></button>';
                     return `<div class="text-center">${EDIT_USER}  ${DELETE_USER}  ${COURSE_VIEW}</div>`;;
 
                 }

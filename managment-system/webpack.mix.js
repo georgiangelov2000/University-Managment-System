@@ -21,3 +21,6 @@ mix.js('resources/js/subjects_managment/subjects_managment.js', 'public/js/subje
 mix.js('resources/js/courses_managment/courses_managment.js', 'public/js/courses_managment')
 mix.js('resources/js/exams_managment/exams_managment.js', 'public/js/exams_managment')
 mix.js('resources/js/exams_managment/user_has_exams.js', 'public/js/exams_managment')
+mix.js('resources/js/marks_managment/marks_managment.js', 'public/js/marks_managment')
+mix.js('resources/js/marks_managment/marks_actions.js', 'public/js/marks_managment')
+mix.js('resources/js/datepicker.js', 'public/js/')
