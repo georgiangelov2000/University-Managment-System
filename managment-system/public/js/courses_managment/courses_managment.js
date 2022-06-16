@@ -9,8 +9,25 @@ $(document).ready(function () {
   var _ref, _ref2;
 
   var table = $('.coursesTable');
+  var filterYear = $('select[name=year]');
+  var filterFee = $('input[name=fee]');
+  $(filterYear).change(function () {
+    {
+      table.DataTable().ajax.reload(null, false);
+    }
+  });
+  $(filterFee).keyup(function () {
+    table.DataTable().ajax.reload(null, false);
+  });
   $('.coursesTable').DataTable({
-    ajax: COURSE_DATA,
+    ajax: {
+      url: COURSE_DATA,
+      data: function data(_data) {
+        _data.search = $('input[type=search]').val();
+        _data.year = $('select[name=year]').val();
+        _data.fee = $('input[name=fee]').val();
+      }
+    },
     processing: true,
     serverSide: true,
     columns: [{

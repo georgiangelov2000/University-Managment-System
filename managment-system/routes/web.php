@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\ApiCoursesController;
 use App\Http\Controllers\Api\ApiExamController;
 use App\Http\Controllers\Api\ApiSubjectController;
 use App\Http\Controllers\Api\ApiUserController;
+use App\Http\Controllers\ApiAttendanceController;
 use App\Http\Controllers\ApiMarkController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,4 +40,5 @@ Route::prefix('api')->group(function () {
     Route::get('/exams', [ApiExamController::class, 'index'])->name('exam.api.index');
     Route::get('/exam/{exam}/users', [ApiExamController::class, 'users'])->name('exam.api.user');
     Route::get('/marks', [ApiMarkController::class, 'index'])->name('mark.api.index');
+    Route::get('/attendances', [ApiAttendanceController::class, 'index'])->name('attendance.api.index');
 });

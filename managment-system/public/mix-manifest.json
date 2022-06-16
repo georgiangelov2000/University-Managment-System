@@ -7,6 +7,8 @@
     "/js/exams_managment/user_has_exams.js": "/js/exams_managment/user_has_exams.js",
     "/js/marks_managment/marks_managment.js": "/js/marks_managment/marks_managment.js",
     "/js/marks_managment/marks_actions.js": "/js/marks_managment/marks_actions.js",
+    "/js/attendances_managment/attendances_managment.js": "/js/attendances_managment/attendances_managment.js",
+    "/js/attendances_managment/attendances_actions.js": "/js/attendances_managment/attendances_actions.js",
     "/js/datepicker.js": "/js/datepicker.js",
     "/css/app.css": "/css/app.css"
 }

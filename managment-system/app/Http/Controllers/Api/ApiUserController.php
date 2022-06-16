@@ -15,9 +15,36 @@ class ApiUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users =User::where('role','!=','admin')->get();
+        $users =User::query();
+
+        $search =$request->get('search');
+
+        $course = $request->get('course');
+        $age = $request->get('age');
+
+        if($search){
+            $users->where(function ($q) use ($search)
+            {
+                $q->where('first_name', 'LIKE', $search . '%')
+                    ->orWhere('last_name', 'LIKE', '%' . $search . '%')
+                        ->orWhere('email', 'LIKE', '%' . $search . '%');
+            });
+        }
+
+        if ($course) {
+            $users->where('course_id','=',$course);
+        }
+
+        if($age) {
+            $users->where(function ($q) use ($age)
+            {
+                $q->where('age', 'LIKE', $age . '%');
+            });
+        }
+
+        $users = $users->get();
 
         $serializer = [];
         foreach ($users as $key => $value) {

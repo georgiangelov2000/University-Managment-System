@@ -8,7 +8,9 @@
                 <li><a href="{{ route('user.create') }}"
                         class="link-dark d-inline-flex text-decoration-none rounded">Add User</a></li>
                 <li><a href="{{ route('user.index') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Users</a></li>
+                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Students</a></li>
+                <li><a href="{{ route('user.index') }}"
+                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Teachers</a></li>
             </ul>
         </li>
         <li class="mb-1">
@@ -78,28 +80,6 @@
             </ul>
         </li>
         <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#staffSalaries" class="nav-link collapsed active">
-                <i class="fa-solid fa-sack-dollar"></i> Staff Salaries
-            </a>
-            <ul class="sub-menu collapse" id="staffSalaries">
-                <li><a href="{{ route('subject.create') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Create Salary</a></li>
-                <li><a href="{{ route('subject.index') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Salaries</a></li>
-            </ul>
-        </li>
-        <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#staffHolidays" class="nav-link collapsed active">
-               <i class="fas fa-umbrella-beach"></i> Staff Holidays
-            </a>
-            <ul class="sub-menu collapse" id="staffHolidays">
-                <li><a href="{{ route('subject.create') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Create Holiday</a></li>
-                <li><a href="{{ route('subject.index') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Holidays</a></li>
-            </ul>
-        </li>
-        <li class="mb-1">
             <a href="#" data-toggle="collapse" data-target="#payments" class="nav-link collapsed active">
               <i class="fab fa-cc-visa"></i>  Payments
             </a>
@@ -110,30 +90,5 @@
                         class="link-dark d-inline-flex text-decoration-none rounded">Manage Payments</a></li>
             </ul>
         </li>
-
-        <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#studentHostels" class="nav-link collapsed active">
-               <i class="fas fa-bed"></i> Student Hostels
-            </a>
-            <ul class="sub-menu collapse" id="studentHostels">
-                <li><a href="{{ route('subject.create') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Create Hostel</a></li>
-                <li><a href="{{ route('subject.index') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Hostels</a></li>
-            </ul>
-        </li>
-
-        <li class="mb-1">
-            <a href="#" data-toggle="collapse" data-target="#products" class="nav-link collapsed active">
-                <i class="fa fa-gavel" aria-hidden="true"></i>  Liquidations
-            </a>
-            <ul class="sub-menu collapse" id="products">
-                <li><a href="{{ route('subject.create') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Create Liquidation</a></li>
-                <li><a href="{{ route('subject.index') }}"
-                        class="link-dark d-inline-flex text-decoration-none rounded">Manage Liquadations</a></li>
-            </ul>
-        </li>
-
     </ul>
 </nav>

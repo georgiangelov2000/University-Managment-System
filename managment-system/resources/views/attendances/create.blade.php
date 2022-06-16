@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form method="post" class="p-3 card marksForm" action="">
+    <form method="post" class="p-3 card marksForm" action="{{route('attendance.store')}}">
         @csrf
         <div class="col-md-6">
             <div class="mb-3 col-md-10 pl-0">
@@ -11,14 +11,14 @@
                     @endforeach
                 </select>
             </div>
-            <button type="button" class="btn btn-warning btn-sm addMarkFields">
+            <button type="button" class="btn btn-warning btn-sm addAttendanceFields">
                 Add attendance field
             </button>
-            <button type="button" class="btn btn-info btn-sm removeMarkFields">
+            <button type="button" class="btn btn-info btn-sm removeAttendanceFields">
                 Remove attendance field
             </button>
-            <div class="mark-wrapper">
-                <div class="d-flex mt-2 mark-content">
+            <div class="attendance-wrapper">
+                <div class="d-flex mt-2 attendance-content">
                     <div class="mb-3 col-md-5 pl-0">
                         <label for="">Subject</label>
                         <select name="subject_id[]" id="" class="form-control form-control-sm">
@@ -31,7 +31,7 @@
                         <label for="">Date</label>
                         <div class="input-group date" id="datepicker">
                             <input type="text" class="form-control form-control-sm" placeholder="dd-mm-yy"
-                                name="date_of_mark[]">
+                                name="date_attendance[]">
                             <span class="input-group-append">
                                 <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>
@@ -41,12 +41,12 @@
                     </div>
                     <div class="mt-3 col-md-5 d-flex align-items-center mb-0 justify-content-around">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                            <label for="customCheckbox1" class="custom-control-label">Attended</label>
+                            <input class="custom-control-input" type="checkbox" name="is_attendance[]" id="IsAttendanceTrue" value="1">
+                            <label for="IsAttendanceTrue" class="custom-control-label">Attended</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="customCheckbox2" value="option2">
-                            <label for="customCheckbox2" class="custom-control-label">Didn't attended</label>
+                            <input class="custom-control-input" type="checkbox" name="is_attendance[]" id="isAttendanceFalse" value="0">
+                            <label for="isAttendanceFalse" class="custom-control-label">Didn't attended</label>
                         </div>
                     </div>
                 </div>
@@ -57,6 +57,7 @@
         </div>
     </form>
     @push('scripts')
-        <script src="{{ mix('js/marks_managment/marks_actions.js') }}"></script>
+        <script src="{{ mix('js/attendances_managment/attendances_managment.js') }}"></script>
+        <script src="{{ mix('js/attendances_managment/attendances_actions.js') }}"></script>
     @endpush
 @endsection

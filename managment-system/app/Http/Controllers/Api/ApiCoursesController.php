@@ -14,9 +14,36 @@ class ApiCoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Datatables::of(Course::query())->make(true);
+        $courses =Course::query();
+
+        $search =$request->get('search');
+
+        $year = $request->get('year');
+        $fee = $request->get('fee');
+
+        if($search){
+            $courses->where(function ($q) use ($search)
+            {
+                $q->where('title', 'LIKE', $search . '%');
+            });
+        }
+
+        if ($year) {
+            $courses->where('year_of_course','=',$year);
+        }
+
+        if($fee) {
+            $courses->where(function ($q) use ($fee)
+            {
+                $q->where('fee', 'LIKE', $fee . '%');
+            });
+        }
+
+        $courses = $courses->get();
+
+        return Datatables::of($courses)->make(true);
     }
 
     /**

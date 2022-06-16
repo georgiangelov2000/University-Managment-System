@@ -11,7 +11,9 @@ class CourseController extends Controller
 {
     public function index()
     {
-        return View::make('courses.index');
+        $years = Course::select('year_of_course')->get();
+
+        return View::make('courses.index',['years' => $years]);
     }
 
     public function create()

@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
 {
-    use HasFactory;
+    protected $table = 'attendances';
+    protected $fillable = [
+        'user_id',
+        'subject_id',
+        'date_attendance',
+        'is_attendance',
+    ];
+    public $timestamps = false;
 }
