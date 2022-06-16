@@ -1,8 +1,26 @@
 $(document).ready(function () {
     var table = $('.coursesTable');
 
+    var filterYear = $('select[name=year]');
+    var filterFee = $('input[name=fee]');
+
+    $(filterYear).change(function(){{
+        table.DataTable().ajax.reload(null, false);
+    }})
+
+    $(filterFee).keyup(function(){
+        table.DataTable().ajax.reload(null, false);
+      });
+
     $('.coursesTable').DataTable({
-        ajax: COURSE_DATA,
+        ajax:{
+            url:COURSE_DATA,
+            data: function (data) {
+                data.search = $('input[type=search]').val();
+                data.year = $('select[name=year]').val();
+                data.fee = $('input[name=fee]').val();
+            }
+        },
         processing: true,
         serverSide: true,
         columns: [{

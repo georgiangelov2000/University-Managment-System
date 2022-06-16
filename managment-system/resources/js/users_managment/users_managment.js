@@ -1,8 +1,25 @@
 $(document).ready(function () {
     var table = $('.userTable');
+    var filterAge = $('input[name=age]');
+    var course = $('select[name=course_id]');
+
+    $(filterAge).keyup(function(){
+        table.DataTable().ajax.reload(null, false);
+      });
+
+    $(course).change(function(){{
+        table.DataTable().ajax.reload(null, false);
+    }})
 
     $('.userTable').DataTable({
-        ajax: USER_DATA,
+        ajax:{
+            url:USER_DATA,
+            data: function (data) {
+                data.course = $('select[name=course_id]').val();
+                data.age = $('input[name=age]').val();
+                data.search = $('input[type=search]').val();
+            }
+        },
         processing: true,
         serverSide: true,
         order: [[1, 'desc']],
@@ -44,6 +61,7 @@ $(document).ready(function () {
                 data: 'course',
                 name: 'course',
             },
+
             {
                 "width": "10%",
                 data: 'created_at',
@@ -138,7 +156,6 @@ $(document).ready(function () {
             }
         })
     });
-
 
 
 });

@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserRequest;
 use App\Models\Course;
+use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 class UserController extends Controller
 {
     public function index(){
-        return View::make('users.index');
+        $courses = Course::all();
+
+        return View::make('users.index',['courses'=>$courses]);
     }
 
     public function create() {

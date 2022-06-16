@@ -5,38 +5,19 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <div class="form-group">
-                    <div class="col-md pl-0 d-flex align-items-center">
-                        <div class="form-group col-md-2 pl-0">
-                            <label class="font-weight-normal">Select by course</label>
-                            <select class="form-control form-control-sm">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label class="font-weight-normal">Select by years</label>
-                            <select class="form-control form-control-sm">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2 pl-0">
-                            <label class="font-weight-normal">Select by year of course</label>
-                            <select class="form-control form-control-sm">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
+                <div class="col-md pl-0 d-flex align-items-center">
+                    <div class="form-group col-md-2 pl-0">
+                        <label>Select by course</label>
+                        <select class="form-control form-control-sm" name="course_id">
+                            <option value="">Select Course</option>
+                            @foreach ($courses as $item)
+                                <option value="{{ $item->id }}">{{ $item->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Select by age</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="Age" name="age">
                     </div>
                 </div>
                 <table class="table table-striped table-bordered table-hover table-sm userTable ">

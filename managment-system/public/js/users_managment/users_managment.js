@@ -5,8 +5,25 @@ var __webpack_exports__ = {};
   \*********************************************************/
 $(document).ready(function () {
   var table = $('.userTable');
+  var filterAge = $('input[name=age]');
+  var course = $('select[name=course_id]');
+  $(filterAge).keyup(function () {
+    table.DataTable().ajax.reload(null, false);
+  });
+  $(course).change(function () {
+    {
+      table.DataTable().ajax.reload(null, false);
+    }
+  });
   $('.userTable').DataTable({
-    ajax: USER_DATA,
+    ajax: {
+      url: USER_DATA,
+      data: function data(_data) {
+        _data.course = $('select[name=course_id]').val();
+        _data.age = $('input[name=age]').val();
+        _data.search = $('input[type=search]').val();
+      }
+    },
     processing: true,
     serverSide: true,
     order: [[1, 'desc']],
