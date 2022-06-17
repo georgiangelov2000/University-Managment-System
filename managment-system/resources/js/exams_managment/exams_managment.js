@@ -2,14 +2,19 @@ $(document).ready(function () {
     var table = $('.examsTable');
 
     $('.examsTable').DataTable({
-        ajax: EXAM_API_INDEX,
+        ajax:{
+            url:EXAM_API_INDEX,
+            data:function(data){
+                data.search = $('input[type=search]').val();
+            }
+        },
         processing: true,
         serverSide: true,
         columns: [
             {
                 name: 'title',
                 render:function(data,type,row) {
-                  return row.subjects.title;
+                  return row.title;
                 }
             },
             {

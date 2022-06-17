@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Exam;
+use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Yajra\Datatables\Datatables;
@@ -15,12 +17,29 @@ class ApiExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $exams= Exam::query();
 
-        $exams = Exam::with('subjects')->get();
+        $search = $request->get('search');
 
-        return Datatables::of($exams)->make(true);
+        if ($search) {
+            $exams->whereHas('subjects', function ($query) use ($search) {
+                $query->where('title', 'LIKE', $search . '%');
+            });
+        }
+
+        $exams = $exams->get();
+
+        $serialization = $exams->map(function($item,$key){
+            return [
+                'title' => $item->subjects->title,
+                'date_start_exam' => $item->date_start_exam,
+                'date_end_exam' => $item->date_end_exam,
+            ];
+        });
+
+        return Datatables::of($serialization)->make(true);
     }
 
     public function users(Exam $exam){

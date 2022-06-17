@@ -14,7 +14,8 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        return View::make('subjects.index');
+        $subjects = Subject::all();
+        return View::make('subjects.index')->with('subjects', $subjects);
     }
 
     public function create()

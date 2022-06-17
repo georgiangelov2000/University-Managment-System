@@ -5,6 +5,21 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                <div class="col-md pl-0 d-flex align-items-center">
+                    <div class="form-group col-md-2 pl-0">
+                        <label>Select by subject</label>
+                        <select class="form-control form-control-sm" name="subject_id">
+                            <option value="">Select subject</option>
+                            @foreach ($subjects as $item)
+                                <option value="{{$item->id}}">{{$item->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Description</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="Description" name="description">
+                    </div>
+                </div>
                 <table class="table table-striped table-bordered table-hover table-sm  subjectsTable">
                     <thead>
                         <tr>
