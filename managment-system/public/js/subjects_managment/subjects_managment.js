@@ -9,8 +9,25 @@ $(document).ready(function () {
   var _ref;
 
   var table = $('.subjectsTable');
+  var subject = $('select[name=subject_id]');
+  var description = $('input[name=description]');
+  $(subject).change(function () {
+    {
+      table.DataTable().ajax.reload(null, false);
+    }
+  });
+  $(description).keyup(function () {
+    table.DataTable().ajax.reload(null, false);
+  });
   $('.subjectsTable').DataTable({
-    ajax: SUBJECT_INDEX,
+    ajax: {
+      url: SUBJECT_INDEX,
+      data: function data(_data) {
+        _data.subject = $('select[name=subject_id]').val();
+        _data.description = $('input[name=description]').val();
+        _data.search = $('input[type=search]').val();
+      }
+    },
     processing: true,
     serverSide: true,
     columns: [{

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var table = $('.userTable');
+
     var filterAge = $('input[name=age]');
     var course = $('select[name=course_id]');
 

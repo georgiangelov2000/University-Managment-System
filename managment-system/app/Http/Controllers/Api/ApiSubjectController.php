@@ -14,9 +14,35 @@ class ApiSubjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Datatables::of(Subject::query())->make(true);
+        $subjects = Subject::query();
+
+        $search = $request->get('search');
+        $subjectFilter = $request->get('subject');
+        $descriptionFilter = $request->get('description');
+
+        if($search){
+            $subjects->where(function ($q) use ($search)
+            {
+                $q->where('title', 'LIKE', $search . '%')
+                    ->orWhere('created_at', 'LIKE', '%' . $search . '%')
+                        ->orWhere('updated_at', 'LIKE', '%' . $search . '%');
+            });
+        }
+        if($subjectFilter) {
+            $subjects->where('id', $subjectFilter);
+        }
+        if($descriptionFilter) {
+            $subjects->where(function ($q) use ($descriptionFilter)
+            {
+                $q->where('description', 'LIKE', $descriptionFilter . '%');
+            });
+        }
+
+        $subjects = $subjects->get();
+
+        return Datatables::of($subjects)->make(true);
     }
 
     /**

@@ -3,7 +3,12 @@ $(document).ready(function () {
 
     var EXAM_ID= $('.userHasExams').attr('data-exam-id');
     $('.userHasExams').DataTable({
-        ajax: USER_VIEW.replace(':id',EXAM_ID),
+        ajax:{
+            url: USER_VIEW.replace(':id',EXAM_ID),
+            data:function(data){
+                data.search = $('input[type=search]').val();
+            }
+        },
         processing: true,
         serverSide: true,
         order: [[1, 'desc']],
