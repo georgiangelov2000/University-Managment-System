@@ -1,12 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserRequest;
 use App\Models\Course;
-use App\Models\Subject;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
@@ -14,13 +11,17 @@ class UserController extends Controller
 {
     public function index(){
         $courses = Course::all();
-
         return View::make('users.index',['courses'=>$courses]);
     }
 
     public function create() {
         $courses = Course::all();
-        return View::make('users.create')->with('courses', $courses);
+
+        $countries = DB::table('countries')
+        ->selectRaw('name')
+        ->get();
+
+        return View::make('users.create')->with('courses', $courses)->with('countries', $countries);
     }
 
     public function store(UserRequest $request) {
@@ -43,7 +44,11 @@ class UserController extends Controller
 
     public function edit (User $user){
         $courses = Course::all();
-        return View::make('users.edit',compact('user','courses'));
+        $countries = DB::table('countries')
+        ->selectRaw('name')
+        ->get();
+
+        return View::make('users.edit',compact('user','courses','countries'));
     }
 
     public function update(UserRequest $request,User $user){

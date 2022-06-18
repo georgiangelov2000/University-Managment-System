@@ -14,7 +14,7 @@ class MarkController extends Controller
 {
 
     public function index(){
-        $users = User::all();
+        $users = User::where('role','student')->get();
         $subjects =Subject::all();
 
         return View::make('marks.index',['subjects' =>$subjects, 'users' =>$users]);

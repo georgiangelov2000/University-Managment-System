@@ -32,6 +32,7 @@ $(document).ready(function () {
     }, {
       'width': '15%',
       render: function render(data, type, row) {
+        console.log(row.id);
         var STUDENTS_VIEW = '<a href=' + EXAM_SHOW.replace(':id', row.id) + ' class="btn btn-primary btn-sm">Students</a>';
         var EDIT_EXAM = '<a href=' + EXAM_EDIT.replace(':id', row.id) + ' class="btn btn-warning btn-sm">Edit</a>';
         var DELETE_EXAM = '<a a data-id=' + row.id + ' type="button" class="btn btn-danger btn-sm deleteExam">Delete</a>';

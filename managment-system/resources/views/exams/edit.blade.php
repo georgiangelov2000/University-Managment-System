@@ -15,11 +15,25 @@
         </div>
         <div class="mb-3">
             <label for="">Exam Start</label>
-            <input type="datetime-local" value="{{$exam->date_start_exam}}" class="form-control form-control-sm" name="date_start_exam">
+            <div class="input-group date" id="datepicker">
+                <input type="text" value="{{$exam->date_start_exam}}" class="form-control form-control-sm {{ $errors->has('date_start_exam') ? 'is-invalid' : '' }}" placeholder="dd-mm-yy" name="date_start_exam">
+                <span class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </span>
+            </div>
         </div>
         <div class="mb-3">
             <label for="">Exam End</label>
-            <input type="datetime-local" value="{{$exam->date_end_exam}}" class="form-control form-control-sm" name="date_end_exam">
+            <div class="input-group date" id="datepicker">
+                <input type="text" value="{{$exam->date_end_exam}}" class="form-control form-control-sm {{ $errors->has('date_end_exam') ? 'is-invalid' : '' }}" placeholder="dd-mm-yy" name="date_start_exam">
+                <span class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </span>
+            </div>
         </div>
         <div class="mb-3">
             <label for="">Users</label>

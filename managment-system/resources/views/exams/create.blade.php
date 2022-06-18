@@ -5,10 +5,9 @@
         @csrf
         <div class="mb-3">
             <label for="">Subject</label>
-            <select name="subject_id" id="subject_id" class="form-control form-control-sm">
+            <select name="subject_id" id="subject_id" class="form-control form-control-sm {{ $errors->has('subject_id') ? 'is-invalid' : '' }}">
                 <option value="">Select Subject</option>
                 @foreach($subjects as $subject)
-                {{-- <option value="{{ $subject->id }}">{{$subject->title}}</option> --}}
                 <option {{ in_array($subject->id, $attached_ids) ? 'disabled' : '' }} value="{{ $subject->id }}">{{$subject->title}}</option>
                 @endforeach
             </select>
@@ -17,15 +16,29 @@
             @endif
         </div>
         <div class="mb-3">
-            <label for="">Exam Start</label>
-            <input type="datetime-local" class="form-control form-control-sm" name="date_start_exam">
+            <label for="">Start Exam</label>
+            <div class="input-group date" id="datepicker">
+                <input type="text" class="form-control form-control-sm {{ $errors->has('date_start_exam') ? 'is-invalid' : '' }}" placeholder="dd-mm-yy" name="date_start_exam">
+                <span class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </span>
+            </div>
             @if($errors->has('date_start_exam'))
                 <div class="error text-danger">{{ $errors->first('date_start_exam') }}</div>
             @endif
         </div>
         <div class="mb-3">
             <label for="">Exam End</label>
-            <input type="datetime-local" class="form-control form-control-sm" name="date_end_exam">
+            <div class="input-group date" id="datepicker">
+                <input type="text" class="form-control form-control-sm {{ $errors->has('date_end_exam') ? 'is-invalid' : '' }}" placeholder="dd-mm-yy" name="date_end_exam">
+                <span class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </span>
+            </div>
             @if($errors->has('date_end_exam'))
                 <div class="error text-danger">{{ $errors->first('date_end_exam') }}</div>
             @endif

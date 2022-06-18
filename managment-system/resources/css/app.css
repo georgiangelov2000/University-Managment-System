@@ -87,3 +87,7 @@ form select option:disabled {
     background: rgb(206, 206, 206);
     color: white;
 }
+
+input,select,textarea {
+    border-radius: .25rem !important;
+}
