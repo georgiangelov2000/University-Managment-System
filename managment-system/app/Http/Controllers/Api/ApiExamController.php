@@ -33,6 +33,7 @@ class ApiExamController extends Controller
 
         $serialization = $exams->map(function($item,$key){
             return [
+                'id' => $item->id,
                 'title' => $item->subjects->title,
                 'date_start_exam' => $item->date_start_exam,
                 'date_end_exam' => $item->date_end_exam,

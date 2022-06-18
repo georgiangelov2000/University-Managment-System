@@ -9,7 +9,6 @@ use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
 class ExamController extends Controller
@@ -23,7 +22,7 @@ class ExamController extends Controller
     {
         $courses = Course::all();
         $subjects = Subject::all();
-        $users = User::all();
+        $users = User::where('role','student')->get();
 
         $attached_subjects = DB::table('exams')->select('subject_id')->get()->toArray();
 

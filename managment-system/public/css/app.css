@@ -88,3 +88,7 @@ form select option:disabled {
     color: white;
 }
 
+input,select,textarea {
+    border-radius: .25rem !important;
+}
+
