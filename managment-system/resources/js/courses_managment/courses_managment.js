@@ -55,10 +55,11 @@ $(document).ready(function () {
             {
                 "width": "20%",
                 render: function (data, type, row) {
-                    var EDIT_COURSE = '<a href=' + COURSE_EDIT.replace(':id', row.id) + ' class="mr-1 btn btn-sm btn-warning editUser">Edit</a>';
-                    var DELETE_COURSE = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteCourse">Delete</a>';
-                    var USERS_VIEW = '<button data-id="' + row.id + '" class="mr-1 btn btn-sm btn-primary userBootbox">Users</button>';
-                    return `<div class="text-center">${EDIT_COURSE}  ${DELETE_COURSE}  ${USERS_VIEW}</div>`;;
+                    var EDIT_COURSE = '<a href=' + COURSE_EDIT.replace(':id', row.id) + ' class="mr-1 btn btn-sm btn-warning editUser" title="Edit"><i class="fa fa-edit"></i></a>';
+                    var DELETE_COURSE = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteCourse" title="Delete"><i class="fa fa-trash"></i></a>';
+                    var USERS_VIEW = '<button data-id="' + row.id + '" class="mr-1 btn btn-sm btn-primary userBootbox" title="Students"><i class="fa fa-users"></i></button>';
+                    var CREATE_PROGRAM = '<a class="btn btn-sm btn-info" title="Program" ><i class="fa fa-info"></i></a>'
+                    return `<div class="text-center">${EDIT_COURSE}  ${DELETE_COURSE}  ${USERS_VIEW} ${CREATE_PROGRAM}</div>`;;
 
                 }
             }
