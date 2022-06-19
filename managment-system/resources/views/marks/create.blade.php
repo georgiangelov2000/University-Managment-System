@@ -34,7 +34,7 @@
                     <div class="mb-3 col-md-5">
                         <label for="">Date</label>
                         <div class="input-group date" id="datepicker">
-                            <input type="text" class="form-control form-control-sm" placeholder="dd-mm-yy" name="date_of_mark[]">
+                            <input type="text" class="datepicker form-control form-control-sm" placeholder="dd-mm-yy" name="date_of_mark[]">
                             <span class="input-group-append">
                                 <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>

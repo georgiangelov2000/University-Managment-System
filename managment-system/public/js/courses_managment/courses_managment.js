@@ -12,9 +12,7 @@ $(document).ready(function () {
   var filterYear = $('select[name=year]');
   var filterFee = $('input[name=fee]');
   $(filterYear).change(function () {
-    {
-      table.DataTable().ajax.reload(null, false);
-    }
+    table.DataTable().ajax.reload(null, false);
   });
   $(filterFee).keyup(function () {
     table.DataTable().ajax.reload(null, false);
@@ -53,10 +51,12 @@ $(document).ready(function () {
     }), _ref2), {
       "width": "20%",
       render: function render(data, type, row) {
-        var EDIT_COURSE = '<a href=' + COURSE_EDIT.replace(':id', row.id) + ' class="mr-1 btn btn-sm btn-warning editUser">Edit</a>';
-        var DELETE_COURSE = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteCourse">Delete</a>';
-        var USERS_VIEW = '<button data-id="' + row.id + '" class="mr-1 btn btn-sm btn-primary userBootbox">Users</button>';
-        return "<div class=\"text-center\">".concat(EDIT_COURSE, "  ").concat(DELETE_COURSE, "  ").concat(USERS_VIEW, "</div>");
+        var EDIT_COURSE = '<a href=' + COURSE_EDIT.replace(':id', row.id) + ' class="btn btn-sm btn-warning editUser" title="Edit"><i class="fa fa-edit"></i></a>';
+        var DELETE_COURSE = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteCourse" title="Delete"><i class="fa fa-trash"></i></a>';
+        var USERS_VIEW = '<button data-id="' + row.id + '" class="btn btn-sm btn-primary userBootbox" title="Students"><i class="fa fa-users"></i></button>';
+        var CREATE_PROGRAM = '<a href= ' + COURSE_PROGRAM_CREATE.replace(':id', row.id) + ' class="btn btn-sm btn-info" title="Create Program" ><i class="fa fa-calendar"></i></a>';
+        var PROGRAM = '<a class="btn btn-sm btn-secondary" title="View Program"><i class="fa fa-search"></i></a>';
+        return "<div class=\"text-center\">".concat(EDIT_COURSE, "  ").concat(DELETE_COURSE, "  ").concat(USERS_VIEW, " ").concat(CREATE_PROGRAM, " ").concat(PROGRAM, "</div>");
         ;
       }
     }],

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CourseRequest;
+use App\Http\Requests\ProgramRequest;
 use App\Models\Course;
+use App\Models\Program;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -50,5 +53,27 @@ class CourseController extends Controller
     {
         $course->delete();
         return redirect()->route('course.index');
+    }
+
+    public function createProgram(Course $course){
+        $subjects = $course->subjects()->get();
+        $course_id  = $course->id;
+        return View::make('courses.create_program',compact('course_id'), ['subjects'=>$subjects]);
+    }
+
+    public function storeProgram(Course $course, ProgramRequest $request){
+        $validated = $request->validated();
+        $program = new Program();
+
+        foreach ($validated['subject_id'] as $key => $value) {
+            $program->create([
+                'course_id' => $course->id,
+                'subject_id' => $validated['subject_id'][$key],
+                'hour' => $validated['hour'][$key],
+                'date' => $validated['date'][$key]
+            ]);
+        }
+
+        return redirect()->route('course.index')->with('success','Successfully created program');
     }
 }

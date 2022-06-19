@@ -1,14 +1,6 @@
-.sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    padding: 48px 0 0;
-    box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
-    min-height: 100vh;
-    background-color: #343a40;
+body{
     font-size: 0.85rem !important;
+
 }
 table th,td {
     font-size: 0.85rem !important;

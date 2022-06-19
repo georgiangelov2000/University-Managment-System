@@ -4,8 +4,11 @@ var __webpack_exports__ = {};
   !*** ./resources/js/datepicker.js ***!
   \************************************/
 $(function () {
-  $('#datepicker').datepicker({
+  $('.datepicker').datepicker({
     format: 'dd-mm-yy'
+  });
+  $('.datetime').datetimepicker({
+    format: 'LT'
   });
 });
 /******/ })()
