@@ -31,7 +31,7 @@ require_once __DIR__ . '/route/subjects.php';
 require_once __DIR__ . '/route/users.php';
 require_once __DIR__ . '/route/marks.php';
 require_once __DIR__ . '/route/attendances.php';
-
+require_once __DIR__ . '/route/programs.php';
 
 Route::prefix('api')->group(function () {
     Route::get('/users', [ApiUserController::class, 'index'])->name('user.api.index');

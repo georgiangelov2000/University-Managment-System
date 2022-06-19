@@ -166,13 +166,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('subject.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Program</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('subject.index') }}" class="nav-link">
+                            <a href="{{ route('program.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Programs</p>
                             </a>
