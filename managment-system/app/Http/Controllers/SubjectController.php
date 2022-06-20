@@ -20,7 +20,6 @@ class SubjectController extends Controller
 
     public function create()
     {
-
         $courses = Course::all();
         return View::make('subjects.create')->with('courses', $courses);
     }

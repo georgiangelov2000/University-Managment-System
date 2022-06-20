@@ -67,6 +67,10 @@ header .form-control-dark {
 
 /* Datatable */
 
+table{
+    width: 100% !important;
+}
+
 .dataTable tbody td{
     padding-top: 1%;
     padding-bottom: 1%;

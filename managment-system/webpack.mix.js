@@ -28,3 +28,4 @@ mix.js('resources/js/attendances_managment/attendances_managment.js', 'public/js
 mix.js('resources/js/attendances_managment/attendances_actions.js', 'public/js/attendances_managment')
 
 mix.js('resources/js/datepicker.js', 'public/js/')
+mix.js('resources/js/field_actions.js', 'public/js/')

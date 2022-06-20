@@ -1,18 +1,14 @@
-$(document).ready(function (){
-    var addField = $('.addField');
-    var removeField = $('.removeField');
+import  {addFieldsDateTimePicker, removeFieldsDateTimePicker}  from "../field_actions";
 
-    var programWrapper = $('.programWrapper');
+addFieldsDateTimePicker(
+    $('.addField'),
+    $('.programContent'),
+    'input[name="date[]"]',
+    'form-group mb-0 d-flex programContent'
+)
 
-    $(addField).on('click',function(){
-        $(programWrapper).append($('.programContent:first').clone(true));
-    })
-
-    $(removeField).on('click',function(){
-        if ($('.programWrapper .programContent').length == 1) {
-            return false;
-        } else {
-            $('.programWrapper .programContent:last-child').remove();
-        }
-    })
-})
+removeFieldsDateTimePicker(
+    '.removeField',
+    '.programWrapper .programContent',
+    '.programWrapper .programContent:last-child',
+)
