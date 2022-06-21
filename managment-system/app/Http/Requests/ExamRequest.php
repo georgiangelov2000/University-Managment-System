@@ -17,6 +17,7 @@ class ExamRequest extends FormRequest
             'subject_id' => 'required|unique:exams,subject_id',
             'date_start_exam' => 'required|date',
             'date_end_exam' => 'required|date',
+            'user_id' => 'array|sometimes'
         ];
     }
 }
