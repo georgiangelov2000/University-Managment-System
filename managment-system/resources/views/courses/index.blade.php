@@ -44,6 +44,7 @@
             var COURSE_DELETE = "{{ route('course.delete', ':id') }}"
             var COURSE_DETAILS = "{{ route('course.show', ':id') }}"
             var COURSE_PROGRAM_CREATE = "{{ route('course.create.program', ':id') }}"
+            var STUDENTS = "{{route('course.students', ':id') }}"
         </script>
     @endpush
 @endsection
