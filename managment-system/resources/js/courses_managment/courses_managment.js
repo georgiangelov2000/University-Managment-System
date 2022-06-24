@@ -23,7 +23,8 @@ $(document).ready(function () {
         },
         processing: true,
         serverSide: true,
-        columns: [{
+        columns: [
+            {
                 "width": "10%",
                 data: 'title',
                 name: 'title',
