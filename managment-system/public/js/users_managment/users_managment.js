@@ -56,7 +56,10 @@ $(document).ready(function () {
     }, {
       "width": "10%",
       data: 'course',
-      name: 'course'
+      name: 'course',
+      render: function render(data, type, row) {
+        return "<div><span>".concat(row.course, "</span><button class=\"btn btn-info btn-sm font-weight-bolder ml-2\" title=\"Information\">+</button></div>");
+      }
     }, {
       "width": "10%",
       data: 'created_at',
@@ -72,10 +75,12 @@ $(document).ready(function () {
     }, {
       "width": "15%",
       render: function render(data, type, row) {
-        var EDIT_USER = '<a href=' + USER_EDIT.replace(':id', row.id) + ' class="btn btn-sm btn-warning editUser" title="Edit"><i class="fa fa-edit"></i></a>';
+        var EDIT_USER = '<a href=' + USER_EDIT.replace(':id', row.id) + ' class="btn btn-sm btn-info editUser" title="Edit"><i class="fa fa-edit"></i></a>';
         var DELETE_USER = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteUser" title="Delete"><i class="fa fa-trash"></i></a>';
-        var COURSE_VIEW = '<button data-id="' + row.id + '" class="mr-1 btn btn-sm btn-primary courseBootbox" title="Courses"><i class="fas fa-book-open"></i></button>';
-        return "<div class=\"text-center\">".concat(EDIT_USER, "  ").concat(DELETE_USER, "  ").concat(COURSE_VIEW, "</div>");
+        var COURSE_VIEW = '<a data-id="' + row.id + '" class="mr-1 btn btn-sm btn-primary courseBootbox" title="Courses"><i class="fas fa-book-open"></i></a>';
+        var EAXM_TAKEN = "<a class='btn btn-success btn-sm' title='Exams taken'><i class='fa fa-check' aria-hidden='true'></i></a>";
+        var FAILED_EXAM = "<a class='btn btn-warning btn-sm' title='Failed exams'><i class='fa fa-exclamation-triangle' aria-hidden='true'></i></a>";
+        return "<div class=\"text-center\">".concat(EDIT_USER, "  ").concat(DELETE_USER, " ").concat(EAXM_TAKEN, "  ").concat(FAILED_EXAM, "</div>");
         ;
       }
     }],

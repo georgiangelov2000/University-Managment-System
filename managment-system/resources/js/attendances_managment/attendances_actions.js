@@ -1,20 +1,14 @@
-$(document).ready(function () {
 
-    var addFields = $('.addAttendanceFields');
-    var removeFields = $('.removeAttendanceFields');
+import  {addFields, removeFields}  from "../field_actions";
 
-    var wrapper = $('.attendance-wrapper');
-
-    $(addFields).on('click', function(){
-        $(wrapper).append($('.attendance-content:first').clone(true))
-    })
-
-    $(removeFields).on('click', function(){
-        if ($('.attendance-wrapper .attendance-content').length == 1) {
-            return false;
-        } else {
-            $('.attendance-wrapper .attendance-content:last-child').remove();
-        }
-    })
-
-})
+addFields(
+    $('.addAttendanceFields'),
+    $('.attendance-content'),
+    'input[name="date_attendance[]"]',
+    'd-flex mt-2 attendance-content'
+)
+removeFields(
+    '.removeAttendanceFields',
+    '.attendance-wrapper .attendance-content',
+    '.attendance-wrapper .attendance-content:last-child',
+);

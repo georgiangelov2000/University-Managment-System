@@ -2,13 +2,24 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
+use App\Http\Services\UserService;
 use App\Models\Course;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
 class UserController extends Controller
 {
+
+    public $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function index(){
         $courses = Course::all();
         return View::make('users.index',['courses'=>$courses]);
@@ -25,15 +36,16 @@ class UserController extends Controller
     }
 
     public function store(UserRequest $request) {
-        $validated = $request->validated();
-
-        $name = $request->file('picture')->getClientOriginalName();
-
-        $request->file('picture')->storeAs('public/users',$name);
-
-        $validated['picture'] = $request->file('picture')->getClientOriginalName();
-
-        User::create($validated);
+        try {
+            DB::beginTransaction();
+                $validated = $request->validated();
+                $this->userService->createUser($validated);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Transaction Failed', ['e' => $e]);
+            return back();
+        }
         return redirect()->route('user.index')->with('success', 'Successfully created data');
     }
 
@@ -51,17 +63,16 @@ class UserController extends Controller
         return View::make('users.edit',compact('user','courses','countries'));
     }
 
-    public function update(UserRequest $request,User $user){
-        $validated = $request->validated();
-
-        $name = $request->file('picture')->getClientOriginalName();
-
-        $request->file('picture')->storeAs('public/users',$name);
-
-        $validated['picture'] = $request->file('picture')->getClientOriginalName();
-
-        $user->update($validated);
-
+    public function update(User $user, UserRequest $request){
+        try {
+            DB::beginTransaction();
+                $validated = $request->validated();
+                $this->userService->updateUser($validated,$user);
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Transaction Failed', ['e' => $e]);
+            return back();
+        }
         return redirect()->route('user.index')->with('success','Successfully updated data');
     }
 

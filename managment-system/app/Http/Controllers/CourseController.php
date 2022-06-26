@@ -6,7 +6,7 @@ use App\Http\Requests\CourseRequest;
 use App\Http\Requests\ProgramRequest;
 use App\Models\Course;
 use App\Models\Program;
-use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -76,4 +76,9 @@ class CourseController extends Controller
 
         return redirect()->route('course.index')->with('success','Successfully created program');
     }
+
+    public function students(Course $course){
+        return View::make('courses.students',compact('course'));
+    }
+
 }

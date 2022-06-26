@@ -50,12 +50,12 @@ $(document).ready(function () {
     }, {
       "width": "30%",
       render: function render(data, type, row) {
-        var COURSES = '<a data-id=' + row.id + ' class="btn btn-primary btn-sm bootbox-courses">Courses</a>';
-        var EDIT_SUBJECT = '<a href=' + SUBJECT_EDIT.replace(':id', row.id) + ' class="btn btn-secondary btn-sm">Edit</a>';
-        var DETACH_COURSE = '<button data-id="' + row.id + '" class="mr-1 btn btn-sm btn-warning bootbox-detach-course">Detach Course</button>';
-        var DELETE_SUBJECT = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteSubject">Delete</a>';
-        return "<div class=\"text-center\">".concat(COURSES, " ").concat(EDIT_SUBJECT, "  ").concat(DELETE_SUBJECT, "  ").concat(DETACH_COURSE, "</div>");
-        ;
+        var COURSES = '<a data-id=' + row.id + ' class="btn btn-primary btn-sm bootbox-courses" title="Courses"><i class="nav-icon fas fa-book"></i></a>';
+        var EDIT_SUBJECT = '<a href=' + SUBJECT_EDIT.replace(':id', row.id) + ' class="btn btn-warning btn-sm" title="Edit"><i class="fa fa-edit"></i></a>';
+        var DETACH_COURSE = '<button data-id="' + row.id + '" class="btn btn-sm btn-secondary bootbox-detach-course"><i class="fas fa-unlink"></i></button>';
+        var DELETE_SUBJECT = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteSubject" title="Delete"><i class="fa fa-trash"></i></a>';
+        var USER_SUBJECT_ATTENDANCE = "<a class='btn btn-success btn-sm' title='Attendances'><i class='fa fa-walking'></i></a>";
+        return "<div class=\"text-center\">".concat(COURSES, " ").concat(EDIT_SUBJECT, "  ").concat(DELETE_SUBJECT, "  ").concat(DETACH_COURSE, " ").concat(USER_SUBJECT_ATTENDANCE, "</div>");
       }
     }],
     'columnDefs': [{

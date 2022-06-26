@@ -26,6 +26,8 @@ class User extends Authenticatable
         'role',
         'course_id',
         'age',
+        'gender',
+        'country',
         'exam_is_taken'
     ];
 

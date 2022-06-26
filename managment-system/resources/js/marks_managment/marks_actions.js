@@ -1,20 +1,13 @@
-$(document).ready(function () {
+import  {addFields, removeFields}  from "../field_actions";
+addFields(
+    $('.addMarkFields'),
+    $('.mark-content'),
+    'input[name="date_of_mark[]"]',
+    'd-flex mt-2 mark-content'
+)
+removeFields(
+    '.removeMarkFields',
+    '.mark-wrapper .mark-content',
+    '.mark-wrapper .mark-content:last-child',
+);
 
-    var addFields = $('.addMarkFields');
-    var removeFields = $('.removeMarkFields');
-
-    var wrapper = $('.mark-wrapper');
-
-    $(addFields).on('click', function(){
-        $(wrapper).append($('.mark-content:first').clone(true))
-    })
-
-    $(removeFields).on('click', function(){
-        if ($('.mark-wrapper .mark-content').length == 1) {
-            return false;
-        } else {
-            $('.mark-wrapper .mark-content:last-child').remove();
-        }
-    })
-
-})

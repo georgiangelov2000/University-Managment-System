@@ -42,7 +42,10 @@
                 </div>
                 <div class="mb-1">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control form-control-sm" name="password">
+                    <input type="password" class="form-control form-control-sm  {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password">
+                    @if ($errors->has('password'))
+                        <div class="error text-danger">{{ $errors->first('password') }}</div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-12 form-group mb-0">

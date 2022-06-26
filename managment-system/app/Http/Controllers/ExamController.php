@@ -3,16 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ExamRequest;
+use App\Http\Services\ExamService;
 use App\Models\Course;
 use App\Models\Exam;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
 class ExamController extends Controller
 {
+
+    public $examService;
+
+    public function __construct(ExamService $examService,){
+        $this->examService = $examService;
+    }
+
     public function index()
     {
         return View::make('exams.index');
@@ -44,13 +53,16 @@ class ExamController extends Controller
     public function store(ExamRequest $request)
     {
 
-        //create the exam
-        $validated = $request->validated();
-        $exam = Exam::create($validated);
-
-        //create users have exams
-        $users = $request->get('user_id');
-        $exam->users()->attach($users);
+        try {
+            DB::beginTransaction();
+                $validated = $request->validated();
+                $this->examService->storeService($validated);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Transaction Failed', ['e' => $e]);
+            return back();
+        }
 
         return redirect()->route('exam.index')->with('success', 'Successfully created data');
     }
@@ -83,11 +95,16 @@ class ExamController extends Controller
 
     public function update(Exam $exam ,ExamRequest $request)
     {
-        $validated = $request->validated();
-        $exam->update($validated);
-
-        $userId = $request->get('user_id');
-        $exam->users()->sync($userId);
+        try {
+            DB::beginTransaction();
+                $validated = $request->validated();
+                $this->examService->updateSerivce($exam, $validated);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Transaction Failed', ['e' => $e]);
+            return back();
+        }
         return redirect()->route('exam.index')->with('success', 'Successfully updated data');
     }
 

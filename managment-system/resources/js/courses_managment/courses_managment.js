@@ -23,7 +23,8 @@ $(document).ready(function () {
         },
         processing: true,
         serverSide: true,
-        columns: [{
+        columns: [
+            {
                 "width": "10%",
                 data: 'title',
                 name: 'title',
@@ -57,7 +58,7 @@ $(document).ready(function () {
                 render: function (data, type, row) {
                     var EDIT_COURSE = '<a href=' + COURSE_EDIT.replace(':id', row.id) + ' class="btn btn-sm btn-warning editUser" title="Edit"><i class="fa fa-edit"></i></a>';
                     var DELETE_COURSE = '<a data-id=' + row.id + ' class="btn btn-danger btn-sm deleteCourse" title="Delete"><i class="fa fa-trash"></i></a>';
-                    var USERS_VIEW = '<button data-id="' + row.id + '" class="btn btn-sm btn-primary userBootbox" title="Students"><i class="fa fa-users"></i></button>';
+                    var USERS_VIEW = '<a href='+ STUDENTS.replace(':id',row.id) +' data-id="' + row.id + '" class="btn btn-sm btn-primary userBootbox" title="Students"><i class="fa fa-users"></i></a>';
                     var CREATE_PROGRAM = '<a href= '+ COURSE_PROGRAM_CREATE.replace(':id',row.id) +' class="btn btn-sm btn-info" title="Create Program" ><i class="fa fa-calendar"></i></a>';
                     var PROGRAM = '<a class="btn btn-sm btn-secondary" title="View Program"><i class="fa fa-search"></i></a>'
                     return `<div class="text-center">${EDIT_COURSE}  ${DELETE_COURSE}  ${USERS_VIEW} ${CREATE_PROGRAM} ${PROGRAM}</div>`;;

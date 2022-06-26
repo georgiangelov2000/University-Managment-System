@@ -2,22 +2,18 @@
 
 
 @section('content')
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-striped table-bordered table-hover table-sm  examsTable ">
-                    <thead>
-                        <tr>
-                            <th class="p-2">Title</th>
-                            <th class="p-2">Start Exam</th>
-                            <th class="p-2">End Exam</th>
-                            <th class="p-2">Actions</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </div>
+    <x-table-template>
+        <table class="table table-striped table-bordered table-hover table-sm  examsTable ">
+            <thead>
+                <tr>
+                    <th class="p-2">Title</th>
+                    <th class="p-2">Start Exam</th>
+                    <th class="p-2">End Exam</th>
+                    <th class="p-2">Actions</th>
+                </tr>
+            </thead>
+        </table>
+    </x-table-template>
     @push('scripts')
         <script src="{{ mix('js/exams_managment/exams_managment.js') }}"></script>
         <script type="text/javascript">

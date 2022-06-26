@@ -4,14 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DetachCourseRequest;
 use App\Http\Requests\SubjectRequest;
+use App\Http\Services\SubjectService;
 use App\Models\Course;
 use App\Models\Subject;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
 class SubjectController extends Controller
 {
+
+    public $subjectService;
+
+    public function __construct(SubjectService $subjectService){
+        $this->subjectService = $subjectService;
+    }
+
     public function index()
     {
         $subjects = Subject::all();
@@ -20,18 +28,23 @@ class SubjectController extends Controller
 
     public function create()
     {
-
         $courses = Course::all();
         return View::make('subjects.create')->with('courses', $courses);
     }
 
     public function store(SubjectRequest $request)
     {
-        $validated = $request->validated();
-        $newSubject = Subject::create($validated);
 
-        $courseId = $request->get('course_id');
-        $newSubject->courses()->attach($courseId);
+        try {
+            DB::beginTransaction();
+                $validated = $request->validated();
+                $this->subjectService->storeService($validated);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Transaction Failed',['e' =>$e]);
+            return back();
+        }
         return redirect()->route('subject.index')->with('success', 'Successfully created data');
     }
 
@@ -46,11 +59,17 @@ class SubjectController extends Controller
 
     public function update(Subject $subject, SubjectRequest $request)
     {
-        $validated = $request->validated();
-        $subject->update($validated);
+        try {
+            DB::beginTransaction();
+                $validated = $request->validated();
+                $this->subjectService->updateService($subject,$validated);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Transaction failed',['e'=>$e]);
+            return back();
+        }
 
-        $courseId = $request->get('course_id');
-        $subject->courses()->sync($courseId);
         return redirect()->route('subject.index')->with('success', 'Successfully updated data');
     }
 
@@ -77,17 +96,26 @@ class SubjectController extends Controller
 
     public function delete(Subject $subject)
     {
-
         $subject->delete();
         return redirect()->route('subject.index');
     }
 
     public function detachCourse (Subject $subject,DetachCourseRequest $request) {
-        $detachedIds = $request->validated();
+        dd($request->all());
+        try {
+            DB::BeginTransaction();
 
-        foreach ($detachedIds as $key => $value) {
-            $subject->courses()->detach($value);
+                $validated = $request->validated();
+                $this->subjectService->detachService($subject,$validated);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Transaction failed',['e'=>$e]);
+            return back();
         }
+
         return redirect()->back()->with('success','Successfully detached course');
     }
+
 }

@@ -4,6 +4,7 @@
     "/js/subjects_managment/subjects_managment.js": "/js/subjects_managment/subjects_managment.js",
     "/js/courses_managment/courses_managment.js": "/js/courses_managment/courses_managment.js",
     "/js/courses_managment/course_action.js": "/js/courses_managment/course_action.js",
+    "/js/courses_managment/students_managment.js": "/js/courses_managment/students_managment.js",
     "/js/exams_managment/exams_managment.js": "/js/exams_managment/exams_managment.js",
     "/js/exams_managment/user_has_exams.js": "/js/exams_managment/user_has_exams.js",
     "/js/marks_managment/marks_managment.js": "/js/marks_managment/marks_managment.js",
@@ -11,5 +12,6 @@
     "/js/attendances_managment/attendances_managment.js": "/js/attendances_managment/attendances_managment.js",
     "/js/attendances_managment/attendances_actions.js": "/js/attendances_managment/attendances_actions.js",
     "/js/datepicker.js": "/js/datepicker.js",
+    "/js/field_actions.js": "/js/field_actions.js",
     "/css/app.css": "/css/app.css"
 }

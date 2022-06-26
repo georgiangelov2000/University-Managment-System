@@ -46,6 +46,16 @@ class ApiCoursesController extends Controller
         return Datatables::of($courses)->make(true);
     }
 
+    public function students(Course $course){
+
+        $users = $course
+        ->users()
+        ->where('role', 'student')
+        ->get();
+
+        return Datatables::of($users)->make(true);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -29,8 +29,8 @@
                     </div>
                     <div class="mb-3 col-md-5">
                         <label for="">Date</label>
-                        <div class="input-group date" id="datepicker">
-                            <input type="text" class="form-control form-control-sm" placeholder="dd-mm-yy"
+                        <div class="input-group date">
+                            <input type="text" class="datepicker form-control form-control-sm" placeholder="dd-mm-yy"
                                 name="date_attendance[]">
                             <span class="input-group-append">
                                 <span class="input-group-text">
@@ -41,11 +41,11 @@
                     </div>
                     <div class="mt-3 col-md-5 d-flex align-items-center mb-0 justify-content-around">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" name="is_attendance[]" id="IsAttendanceTrue" value="1">
+                            <input class="custom-control-input" type="radio"  name="is_attendance[]" id="IsAttendanceTrue" value="1">
                             <label for="IsAttendanceTrue" class="custom-control-label">Attended</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" name="is_attendance[]" id="isAttendanceFalse" value="0">
+                            <input class="custom-control-input" type="radio"  name="is_attendance[]" id="isAttendanceFalse" value="0">
                             <label for="isAttendanceFalse" class="custom-control-label">Didn't attended</label>
                         </div>
                     </div>
