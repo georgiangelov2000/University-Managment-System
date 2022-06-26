@@ -45,6 +45,19 @@ class ApiSubjectController extends Controller
         return Datatables::of($subjects)->make(true);
     }
 
+    public function courses(Subject $subject){
+        $attached_courses = $subject->courses()->get()->map(function ($v) {
+            return [
+                "id" => $v->id,
+                "title" => $v->title,
+                "year_of_course" => $v->year_of_course,
+                "fee" => $v->fee,
+            ];
+        })->toArray();
+
+        return Datatables::of($attached_courses)->make(true);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

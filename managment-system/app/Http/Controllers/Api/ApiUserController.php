@@ -64,6 +64,7 @@ class ApiUserController extends Controller
         return Datatables::of($serializer)->make(true);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *

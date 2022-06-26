@@ -41,4 +41,5 @@ Route::prefix('api')->group(function () {
     Route::get('/exam/{exam}/users', [ApiExamController::class, 'users'])->name('exam.api.user');
     Route::get('/marks', [ApiMarkController::class, 'index'])->name('mark.api.index');
     Route::get('/attendances', [ApiAttendanceController::class, 'index'])->name('attendance.api.index');
+    Route::get('/{subject}/courses', [ApiSubjectController::class, 'courses'])->name('subject.api.show');
 });

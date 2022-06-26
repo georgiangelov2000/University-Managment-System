@@ -117,4 +117,5 @@ class SubjectController extends Controller
 
         return redirect()->back()->with('success','Successfully detached course');
     }
+
 }
